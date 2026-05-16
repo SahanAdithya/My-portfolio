@@ -1091,8 +1091,6 @@ body {
   background: #f8f8f8;
   transform: scale(1.15);
 }
-  font-weight: 700;
-}
 
 .card-content p {
   color: var(--text-secondary);

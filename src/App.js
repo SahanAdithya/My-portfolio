@@ -10,7 +10,7 @@ import {
 } from 'react-icons/fa';
 import { SiNextdotjs, SiTailwindcss, SiRaspberrypi } from 'react-icons/si';
 
-import myProfilePic from './profile.jpg';
+
 import sahanLogo from './sahan-logo.png';
 import sahanLogoNavy from './sahan-logo-navy.png';
 import { FaXTwitter } from 'react-icons/fa6';
@@ -314,7 +314,6 @@ function App() {
           <button className="control-btn-lux prev">←</button>
           <button className="control-btn-lux next">→</button>
         </div>
-      </section>
       </section>
 
       {/* --- CONTACT SECTION --- */}
