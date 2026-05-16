@@ -15,6 +15,7 @@ import sahanLogoNavy from './sahan-logo-navy.png';
 import { FaXTwitter } from 'react-icons/fa6'; 
 
 // --- 3. IMAGE IMPORTS ---
+import heroBg from './hero-bg.png';
 import voiceImg from './voice-assistant.png';
 import libraryImg from './library-system.png';
 import travelImg from './travel-api.png';
@@ -120,22 +121,14 @@ function App() {
 
       {/* --- HERO SECTION --- */}
       <header id="home" className="hero-section">
-        <div className="hero-background-text">
-          <span className="bg-text-filled">Sahan</span>
-          <span className="bg-text-outline">Adithya</span>
-        </div>
         <div className="hero-content">
-          <h1 className="hero-title">SOFTWARE ENGINEER & DEVELOPER</h1>
+          <h1 className="hero-title">Bold Ideas That <br />Start With Vision.</h1>
           <p className="hero-subtitle">
-            Strategic code for better user journeys, robust backend systems, and higher ROI.
+            Strategic code for better user journeys, robust backend systems, and elegant digital innovation.
           </p>
-          <div className="social-icons">
-            <a href="https://www.linkedin.com/in/sahan-adithya-32a941359/" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
-            <a href="https://github.com/SahanAdithya" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-            <a href="https://www.facebook.com/sahan.adithya.311" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
-            <a href="https://www.instagram.com/__.sahan.adithya.__/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-            <a href="https://x.com/sahan_adithya09" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
-          </div>
+          <button className="btn-get-in-touch" onClick={() => scrollToSection('contact')}>
+            Get In Touch ↗
+          </button>
         </div>
       </header>
 
