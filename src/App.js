@@ -63,7 +63,7 @@ function App() {
 
     // B. Scroll Spy (Navbar Highlight)
     const handleScroll = () => {
-      const sections = ['home', 'about', 'resume', 'projects', 'contact'];
+      const sections = ['home', 'about', 'projects', 'contact'];
       const scrollY = window.scrollY;
       const viewportHeight = window.innerHeight;
       const triggerPoint = scrollY > 10 ? scrollY + (viewportHeight * 0.3) : 0;
@@ -123,7 +123,6 @@ function App() {
         </div>
         <div className="nav-links">
           <span className={activeSection === 'about' ? 'active' : ''} onClick={() => scrollToSection('about')}>About Me</span>
-          <span onClick={() => scrollToSection('resume')}>Services</span>
           <span className={activeSection === 'projects' ? 'active' : ''} onClick={() => scrollToSection('projects')}>Projects</span>
           <span className={activeSection === 'contact' ? 'active' : ''} onClick={() => scrollToSection('contact')}>Contact</span>
         </div>
@@ -181,95 +180,7 @@ function App() {
         </div>
       </section>
 
-      {/* --- RESUME SECTION --- */}
-      <section id="resume" className="resume-section">
-        <div className="resume-stack">
 
-          {/* SOFTWARE SKILLS */}
-          <div className="resume-block fade-in-section">
-            <h4>SOFTWARE SKILLS</h4>
-            <div className="two-column-list">
-              <div className="skill-bar">
-                <div className="skill-info"><span><FaJava style={iconStyle} /> Java</span><span>90%</span></div>
-                <div className="bar-bg"><div className="bar-fill" style={{ width: '90%' }}></div></div>
-              </div>
-              <div className="skill-bar">
-                <div className="skill-info"><span><FaPython style={iconStyle} /> Python</span><span>85%</span></div>
-                <div className="bar-bg"><div className="bar-fill" style={{ width: '85%' }}></div></div>
-              </div>
-              <div className="skill-bar">
-                <div className="skill-info"><span><FaJs style={iconStyle} /> JavaScript</span><span>80%</span></div>
-                <div className="bar-bg"><div className="bar-fill" style={{ width: '80%' }}></div></div>
-              </div>
-              <div className="skill-bar">
-                <div className="skill-info"><span><FaDatabase style={iconStyle} /> SQL / Database</span><span>85%</span></div>
-                <div className="bar-bg"><div className="bar-fill" style={{ width: '85%' }}></div></div>
-              </div>
-              <div className="skill-bar">
-                <div className="skill-info"><span><FaReact style={iconStyle} /> React / Web</span><span>60%</span></div>
-                <div className="bar-bg"><div className="bar-fill" style={{ width: '60%' }}></div></div>
-              </div>
-              <div className="skill-bar">
-                <div className="skill-info"><span><FaGitAlt style={iconStyle} /> Git / Version Control</span><span>75%</span></div>
-                <div className="bar-bg"><div className="bar-fill" style={{ width: '75%' }}></div></div>
-              </div>
-            </div>
-          </div>
-
-          {/* EXPERIENCE */}
-          <div className="resume-block fade-in-section">
-            <h4>EXPERIENCE</h4>
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-date">Oct 2025 - Jan 2026</div>
-              <div className="timeline-title">Foodz@Yourz Project</div>
-              <div className="timeline-desc">Lead Database Architect. Designed EERD and SQL schema for grocery delivery system.</div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-date">2024 - 2025</div>
-              <div className="timeline-title">University Java Suite</div>
-              <div className="timeline-desc">Developed OOP-based applications for alumni management.</div>
-            </div>
-          </div>
-
-          {/* WHAT I DO (Services Grid) */}
-          <div className="resume-block services-block fade-in-section">
-            <h4>WHAT I DO</h4>
-            <p className="services-subtitle">
-              I combine technical expertise with creative problem-solving to build robust and user-centric digital solutions.
-            </p>
-            <div className="services-grid">
-
-              <div className="service-card">
-                <div className="service-icon"><FaServer /></div>
-                <h5>Backend Development</h5>
-                <p>Building scalable and secure server-side applications using Java and Python to power your business logic.</p>
-              </div>
-
-              <div className="service-card">
-                <div className="service-icon"><FaDatabase /></div>
-                <h5>Database Design</h5>
-                <p>Designing efficient SQL schemas and managing data integrity for high-performance applications.</p>
-              </div>
-
-              <div className="service-card">
-                <div className="service-icon"><FaNetworkWired /></div>
-                <h5>API Construction</h5>
-                <p>Creating RESTful APIs that ensure seamless communication between your front-end and back-end systems.</p>
-              </div>
-
-              <div className="service-card">
-                <div className="service-icon"><FaLaptopCode /></div>
-                <h5>Frontend Integration</h5>
-                <p>Connecting user interfaces with backend services using modern frameworks like React for dynamic experiences.</p>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </section>
 
       {/* --- PROJECTS SECTION (Marquee Animation) --- */}
       <section id="projects" className="projects-section fade-in-section">
