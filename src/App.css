@@ -410,20 +410,17 @@ body {
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
 }
 
-/* --- ABOUT SECTION --- */
-.about-section {
+/* --- ABOUT SECTION (LUX) --- */
+.about-section-lux {
   background-color: var(--bg-secondary);
-  padding: 100px 5%;
+  padding: 120px 5% 80px;
   min-height: 80vh;
-  display: flex;
-  align-items: center;
   position: relative;
   overflow: hidden;
   z-index: 1;
 }
 
-/* --- THE WAVY LINES BACKGROUND --- */
-.about-section::before {
+.about-section-lux::before {
   content: '';
   position: absolute;
   top: 0;
@@ -434,24 +431,147 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  filter: blur(2px); /* Same blur amount as Home page */
-  opacity: 0.8; /* Subtle texture effect */
+  filter: blur(2px);
+  opacity: 0.6;
   pointer-events: none;
   z-index: -1;
 }
 
-/* --- GLOW ORB (Subtle Gray) --- */
-.about-section::after {
-  content: '';
-  position: absolute;
-  top: 20%;
-  right: 10%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
-  filter: blur(80px);
-  z-index: -1;
-  pointer-events: none;
+.about-container-lux {
+  display: flex;
+  max-width: 1300px;
+  margin: 0 auto;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.about-left-lux {
+  flex: 0 0 350px;
+}
+
+.about-title-lux {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 40px;
+  line-height: 1;
+}
+
+.pov-selector-lux {
+  margin-top: 40px;
+}
+
+.pov-label-lux {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.pov-line-lux {
+  width: 40px;
+  height: 1px;
+  background-color: #888;
+}
+
+.pov-label-lux span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #888;
+}
+
+.pov-tabs-lux {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.pov-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 5px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #888;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+.pov-tab.active {
+  color: #111;
+  opacity: 1;
+  border-bottom-color: #111;
+  padding-left: 10px;
+}
+
+.about-right-lux {
+  flex: 1;
+  padding-top: 20px;
+}
+
+.about-quote-lux {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  line-height: 1.4;
+  color: #111;
+  font-weight: 400;
+  margin: 0;
+  position: relative;
+}
+
+/* --- TECH STACK BAR (LUX) --- */
+.tech-stack-bar-lux {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 100px auto 0;
+  padding-top: 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.tech-item-lux {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+.tech-item-lux span {
+  background-color: #eee;
+  color: #444;
+  padding: 4px 6px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+}
+
+@media (max-width: 992px) {
+  .about-container-lux {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .about-left-lux {
+    flex: none;
+    width: 100%;
+  }
+  .about-title-lux {
+    font-size: 3.5rem;
+  }
+  .about-quote-lux {
+    font-size: 1.8rem;
+  }
 }
 
 /* --- CINEMATIC FADE-UP ANIMATION --- */

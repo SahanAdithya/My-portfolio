@@ -108,6 +108,14 @@ function App() {
 
   const iconStyle = { marginRight: '8px', verticalAlign: 'middle' };
 
+  const [aboutPov, setAboutPov] = useState('everyone');
+
+  const povData = {
+    everyone: "I'm a Computer Science undergrad who has been hooked on tech since childhood. I love building clean, well-planned solutions for real-world problems. I always prioritize clear code, proper formatting, and purposeful, modern execution.",
+    recruiters: "A dedicated Computer Science student at the University of Westminster with a track record of delivering high-quality academic and personal projects. I specialize in Java, Python, and React, focusing on building scalable systems that meet business requirements.",
+    developers: "Full-stack developer with a passion for clean architecture and efficient algorithms. I enjoy working with React, Node.js, and complex SQL schemas. I'm always looking for ways to optimize performance and improve developer experience."
+  };
+
   return (
     <div className="App">
 
@@ -156,27 +164,56 @@ function App() {
         </div>
       </header>
 
-      {/* --- ABOUT SECTION --- */}
-      <section id="about" className="about-section fade-in-section">
-        <div className="about-container">
-          <div className="about-text">
-            <h3>ABOUT</h3>
-            <p className="email">adithyasahan09@gmail.com</p>
-            <p className="bio">
-              "Motivated Computer Science student at University of Westminster with a strong foundation
-              in software engineering and algorithms. I am passionate about building scalable web applications
-              and solving complex problems through code. Currently honing my skills in Java and Python,
-              I am seeking opportunities to apply my technical knowledge in a real-world setting. Let's build
-              something impactful."
-            </p>
-            <div className="location-info">
-              <span>Colombo, Sri Lanka</span>
+      {/* --- ABOUT SECTION (Real Me Layout) --- */}
+      <section id="about" className="about-section-lux fade-in-section">
+        <div className="about-container-lux">
+          <div className="about-left-lux">
+            <h2 className="about-title-lux">Real Me</h2>
+            <div className="pov-selector-lux">
+              <div className="pov-label-lux">
+                <div className="pov-line-lux"></div>
+                <span>CHOOSE YOUR POV</span>
+              </div>
+              <div className="pov-tabs-lux">
+                <button 
+                  className={`pov-tab ${aboutPov === 'everyone' ? 'active' : ''}`}
+                  onClick={() => setAboutPov('everyone')}
+                >
+                  <FaLaptopCode style={iconStyle} /> Everyone
+                </button>
+                <button 
+                  className={`pov-tab ${aboutPov === 'recruiters' ? 'active' : ''}`}
+                  onClick={() => setAboutPov('recruiters')}
+                >
+                  <FaServer style={iconStyle} /> Recruiters
+                </button>
+                <button 
+                  className={`pov-tab ${aboutPov === 'developers' ? 'active' : ''}`}
+                  onClick={() => setAboutPov('developers')}
+                >
+                  <FaJs style={iconStyle} /> Developers
+                </button>
+              </div>
             </div>
           </div>
-          <div className="about-image">
-            {/* Replace this URL with {myProfilePic} if you uncommented the import above */}
-            <img src={myProfilePic} alt="Profile" />
+
+          <div className="about-right-lux">
+            <p className="about-quote-lux">
+              "{povData[aboutPov]}"
+            </p>
           </div>
+        </div>
+
+        {/* TECH STACK BAR */}
+        <div className="tech-stack-bar-lux">
+          <div className="tech-item-lux"><span>JS</span> JAVASCRIPT</div>
+          <div className="tech-item-lux"><span>TS</span> TYPESCRIPT</div>
+          <div className="tech-item-lux"><span>JAVA</span> JAVA</div>
+          <div className="tech-item-lux"><span>C++</span> C++</div>
+          <div className="tech-item-lux"><span>NEXT</span> NEXT.JS</div>
+          <div className="tech-item-lux"><span>REACT</span> REACT</div>
+          <div className="tech-item-lux"><span>CSS</span> TAILWIND CSS</div>
+          <div className="tech-item-lux"><span>FIGMA</span> FIGMA</div>
         </div>
       </section>
 
