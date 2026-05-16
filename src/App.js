@@ -111,7 +111,7 @@ function App() {
   const [aboutPov, setAboutPov] = useState('everyone');
 
   const povData = {
-    everyone: "I'm a Computer Science undergrad who has been hooked on tech since childhood. I love building clean, well-planned solutions for real-world problems. I always prioritize clear code, proper formatting, and purposeful, modern execution.",
+    everyone: "I’m a Computer Science undergraduate with a lifelong passion for technology and a knack for building clean, well-planned solutions to real-world problems. For me, writing code isn't just about making things work—it's about clarity, proper formatting, and purposeful, modern execution.",
     recruiters: "A dedicated Computer Science student at the University of Westminster with a track record of delivering high-quality academic and personal projects. I specialize in Java, Python, and React, focusing on building scalable systems that meet business requirements.",
     developers: "Full-stack developer with a passion for clean architecture and efficient algorithms. I enjoy working with React, Node.js, and complex SQL schemas. I'm always looking for ways to optimize performance and improve developer experience."
   };
@@ -168,26 +168,26 @@ function App() {
       <section id="about" className="about-section-lux fade-in-section">
         <div className="about-container-lux">
           <div className="about-left-lux">
-            <h2 className="about-title-lux">Real Me</h2>
+            <h2 className="about-title-lux">Hello !</h2>
             <div className="pov-selector-lux">
               <div className="pov-label-lux">
                 <div className="pov-line-lux"></div>
                 <span>CHOOSE YOUR POV</span>
               </div>
               <div className="pov-tabs-lux">
-                <button 
+                <button
                   className={`pov-tab ${aboutPov === 'everyone' ? 'active' : ''}`}
                   onClick={() => setAboutPov('everyone')}
                 >
                   <FaLaptopCode style={iconStyle} /> Everyone
                 </button>
-                <button 
+                <button
                   className={`pov-tab ${aboutPov === 'recruiters' ? 'active' : ''}`}
                   onClick={() => setAboutPov('recruiters')}
                 >
                   <FaServer style={iconStyle} /> Recruiters
                 </button>
-                <button 
+                <button
                   className={`pov-tab ${aboutPov === 'developers' ? 'active' : ''}`}
                   onClick={() => setAboutPov('developers')}
                 >
