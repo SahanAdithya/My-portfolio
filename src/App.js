@@ -6,8 +6,9 @@ import {
   FaFacebookF, FaLinkedinIn, FaInstagram, FaGithub,
   FaDiscord,
   FaJava, FaPython, FaJs, FaDatabase, FaReact, FaGitAlt, FaEnvelope, FaPhone,
-  FaServer, FaNetworkWired, FaLaptopCode
+  FaServer, FaNetworkWired, FaLaptopCode, FaHtml5, FaCss3Alt, FaFigma
 } from 'react-icons/fa';
+import { SiNextdotjs, SiTailwindcss, SiRaspberrypi } from 'react-icons/si';
 
 import myProfilePic from './profile.jpg';
 import sahanLogo from './sahan-logo.png';
@@ -111,7 +112,7 @@ function App() {
   const [aboutPov, setAboutPov] = useState('everyone');
 
   const povData = {
-    everyone: "I’m a Computer Science undergraduate with a lifelong passion for technology and a knack for building clean, well-planned solutions to real-world problems. For me, writing code isn't just about making things work—it's about clarity, proper formatting, and purposeful, modern execution.",
+    everyone: "I’m a Computer Science undergraduate with a lifelong passion for technology and a knack for building clean, well-planned solutions to real-world problems. For me, writing code isn't just about making things work it's about clarity, proper formatting, and purposeful, modern execution.",
     recruiters: "A dedicated Computer Science student at the University of Westminster with a track record of delivering high-quality academic and personal projects. I specialize in Java, Python, and React, focusing on building scalable systems that meet business requirements.",
     developers: "Full-stack developer with a passion for clean architecture and efficient algorithms. I enjoy working with React, Node.js, and complex SQL schemas. I'm always looking for ways to optimize performance and improve developer experience."
   };
@@ -204,198 +205,116 @@ function App() {
           </div>
         </div>
 
-        {/* TECH STACK BAR */}
-        <div className="tech-stack-bar-lux">
-          <div className="tech-item-lux"><span>JS</span> JAVASCRIPT</div>
-          <div className="tech-item-lux"><span>TS</span> TYPESCRIPT</div>
-          <div className="tech-item-lux"><span>JAVA</span> JAVA</div>
-          <div className="tech-item-lux"><span>C++</span> C++</div>
-          <div className="tech-item-lux"><span>NEXT</span> NEXT.JS</div>
-          <div className="tech-item-lux"><span>REACT</span> REACT</div>
-          <div className="tech-item-lux"><span>CSS</span> TAILWIND CSS</div>
-          <div className="tech-item-lux"><span>FIGMA</span> FIGMA</div>
+        {/* TECH STACK MARQUEE */}
+        <div className="marquee-lux">
+          <div className="marquee-track-lux">
+            <div className="tech-item-lux"><FaGitAlt /> GIT</div>
+            <div className="tech-item-lux"><SiTailwindcss /> TAILWIND</div>
+            <div className="tech-item-lux"><FaReact /> REACT</div>
+            <div className="tech-item-lux"><FaPython /> PYTHON</div>
+            <div className="tech-item-lux"><FaJs /> JAVASCRIPT</div>
+            <div className="tech-item-lux"><SiRaspberrypi /> RASPBERRY</div>
+            <div className="tech-item-lux"><FaFigma /> FIGMA</div>
+            <div className="tech-item-lux"><FaJava /> JAVA</div>
+            <div className="tech-item-lux"><SiNextdotjs /> NEXT.JS</div>
+            <div className="tech-item-lux"><FaHtml5 /> HTML</div>
+            <div className="tech-item-lux"><FaCss3Alt /> CSS</div>
+            
+            {/* DUPLICATE FOR SEAMLESS LOOP */}
+            <div className="tech-item-lux"><FaGitAlt /> GIT</div>
+            <div className="tech-item-lux"><SiTailwindcss /> TAILWIND</div>
+            <div className="tech-item-lux"><FaReact /> REACT</div>
+            <div className="tech-item-lux"><FaPython /> PYTHON</div>
+            <div className="tech-item-lux"><FaJs /> JAVASCRIPT</div>
+            <div className="tech-item-lux"><SiRaspberrypi /> RASPBERRY</div>
+            <div className="tech-item-lux"><FaFigma /> FIGMA</div>
+            <div className="tech-item-lux"><FaJava /> JAVA</div>
+            <div className="tech-item-lux"><SiNextdotjs /> NEXT.JS</div>
+            <div className="tech-item-lux"><FaHtml5 /> HTML</div>
+            <div className="tech-item-lux"><FaCss3Alt /> CSS</div>
+          </div>
         </div>
       </section>
 
 
 
-      {/* --- PROJECTS SECTION (Marquee Animation) --- */}
-      <section id="projects" className="projects-section fade-in-section">
-        <div className="section-header">
-          <h2>My Projects</h2>
-          <div className="section-underline"></div>
+      {/* --- PROJECTS SECTION (Interactive Carousel) --- */}
+      <section id="projects" className="projects-section-lux fade-in-section">
+        <div className="section-header-lux">
+          <h2>My Adventures in Code</h2>
+          <p>Explore some of my most impactful projects and technical experiments.</p>
         </div>
 
-        <div className="projects-scroll-container">
-          <div className="projects-track">
-
-            {/* === SET 1: ORIGINAL CARDS === */}
-
-            {/* Project 1 */}
-            <div className="project-card">
-              <div className="image-container">
-                <img src={voiceImg} alt="AI Voice Assistant" />
-              </div>
-              <div className="card-content">
-                <h3>AI Voice Assistant</h3>
-                <p>A desktop voice assistant capable of automating tasks, managing schedules, and retrieving web information using natural language processing.</p>
-                <div className="tech-tags">
-                  <span className="tag">Python</span>
-                  <span className="tag">NLP</span>
-                  <span className="tag">APIs</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 2 */}
-            <div className="project-card">
-              <div className="image-container">
-                <img src={libraryImg} alt="Library System" />
-              </div>
-              <div className="card-content">
-                <h3>Library System</h3>
-                <p>A comprehensive Java application for managing library books, member records, and loan history with a MySQL database integration.</p>
-                <div className="tech-tags">
-                  <span className="tag">Java</span>
-                  <span className="tag">MySQL</span>
-                  <span className="tag">OOP</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 3 */}
-            <div className="project-card">
-              <div className="image-container">
-                <img src={travelImg} alt="Travel Booking API" />
-              </div>
-              <div className="card-content">
-                <h3>Travel Booking API</h3>
-                <p>Designed a RESTful API for a travel booking platform. Handles user authentication, flight search, and secure payment processing.</p>
-                <div className="tech-tags">
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Express</span>
-                  <span className="tag">MongoDB</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 4 */}
-            <div className="project-card">
-              <div className="image-container">
-                <img src={ecommerceImg} alt="E-commerce Platform" />
-              </div>
-              <div className="card-content">
-                <h3>ShopEasy E-commerce</h3>
-                <p>A full-stack e-commerce application with product listings, a shopping cart, user authentication, and secure payment integration.</p>
-                <div className="tech-tags">
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">MongoDB</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 5 */}
-            <div className="project-card">
-              <div className="image-container">
-                <img src={cryptoImg} alt="Crypto Price Tracker" />
-              </div>
-              <div className="card-content">
-                <h3>Crypto Price Tracker</h3>
-                <p>A real-time dashboard tracking cryptocurrency prices, market caps, and historical data using a public API with interactive charts.</p>
-                <div className="tech-tags">
-                  <span className="tag">React</span>
-                  <span className="tag">API</span>
-                  <span className="tag">Chart.js</span>
-                </div>
-              </div>
-            </div>
-
-
-            {/* === SET 2: DUPLICATE CARDS (For Seamless Loop) === */}
-
-            {/* Project 1 Duplicate */}
-            <div className="project-card">
-              <div className="image-container">
-                <img src={voiceImg} alt="AI Voice Assistant" />
-              </div>
-              <div className="card-content">
-                <h3>AI Voice Assistant</h3>
-                <p>A desktop voice assistant capable of automating tasks, managing schedules, and retrieving web information using natural language processing.</p>
-                <div className="tech-tags">
-                  <span className="tag">Python</span>
-                  <span className="tag">NLP</span>
-                  <span className="tag">APIs</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 2 Duplicate */}
-            <div className="project-card">
-              <div className="image-container">
-                <img src={libraryImg} alt="Library System" />
-              </div>
-              <div className="card-content">
-                <h3>Library System</h3>
-                <p>A comprehensive Java application for managing library books, member records, and loan history with a MySQL database integration.</p>
-                <div className="tech-tags">
-                  <span className="tag">Java</span>
-                  <span className="tag">MySQL</span>
-                  <span className="tag">OOP</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 3 Duplicate */}
-            <div className="project-card">
-              <div className="image-container">
-                <img src={travelImg} alt="Travel Booking API" />
-              </div>
-              <div className="card-content">
-                <h3>Travel Booking API</h3>
-                <p>Designed a RESTful API for a travel booking platform. Handles user authentication, flight search, and secure payment processing.</p>
-                <div className="tech-tags">
-                  <span className="tag">Node.js</span>
-                  <span className="tag">Express</span>
-                  <span className="tag">MongoDB</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 4 Duplicate */}
-            <div className="project-card">
-              <div className="image-container">
-                <img src={ecommerceImg} alt="E-commerce Platform" />
-              </div>
-              <div className="card-content">
-                <h3>ShopEasy E-commerce</h3>
-                <p>A full-stack e-commerce application with product listings, a shopping cart, user authentication, and secure payment integration.</p>
-                <div className="tech-tags">
-                  <span className="tag">React</span>
-                  <span className="tag">Node.js</span>
-                  <span className="tag">MongoDB</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 5 Duplicate */}
-            <div className="project-card">
-              <div className="image-container">
-                <img src={cryptoImg} alt="Crypto Price Tracker" />
-              </div>
-              <div className="card-content">
-                <h3>Crypto Price Tracker</h3>
-                <p>A real-time dashboard tracking cryptocurrency prices, market caps, and historical data using a public API with interactive charts.</p>
-                <div className="tech-tags">
-                  <span className="tag">React</span>
-                  <span className="tag">API</span>
-                  <span className="tag">Chart.js</span>
-                </div>
-              </div>
-            </div>
-
+        {/* Category Filters */}
+        <div className="projects-filters-lux">
+          <div className="filter-pills-lux">
+            <button className="filter-pill active">All</button>
+            <button className="filter-pill">Java</button>
+            <button className="filter-pill">React</button>
+            <button className="filter-pill">Python</button>
+            <button className="filter-pill">Database</button>
+            <button className="filter-pill">API</button>
+            <button className="filter-pill">Web</button>
+            <button className="btn-view-more-lux">View More →</button>
           </div>
         </div>
+
+        {/* Carousel Container */}
+        <div className="projects-carousel-container-lux">
+          <div className="projects-carousel-lux">
+            {/* Project Card 1 */}
+            <div className="project-card-lux">
+              <img src={voiceImg} alt="AI Voice Assistant" />
+              <div className="card-overlay-lux">
+                <h3>AI Voice Assistant</h3>
+                <p>Automating tasks with NLP</p>
+              </div>
+            </div>
+
+            {/* Project Card 2 */}
+            <div className="project-card-lux">
+              <img src={libraryImg} alt="Library System" />
+              <div className="card-overlay-lux">
+                <h3>Library System</h3>
+                <p>Java & MySQL Database</p>
+              </div>
+            </div>
+
+            {/* Project Card 3 */}
+            <div className="project-card-lux">
+              <img src={travelImg} alt="Travel Booking API" />
+              <div className="card-overlay-lux">
+                <h3>Travel Booking API</h3>
+                <p>Node.js RESTful Platform</p>
+              </div>
+            </div>
+
+            {/* Project Card 4 */}
+            <div className="project-card-lux">
+              <img src={ecommerceImg} alt="E-commerce Platform" />
+              <div className="card-overlay-lux">
+                <h3>ShopEasy E-commerce</h3>
+                <p>Full-stack React App</p>
+              </div>
+            </div>
+
+            {/* Project Card 5 */}
+            <div className="project-card-lux">
+              <img src={cryptoImg} alt="Crypto Tracker" />
+              <div className="card-overlay-lux">
+                <h3>Crypto Tracker</h3>
+                <p>Real-time Market Dashboard</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Carousel Controls */}
+        <div className="carousel-controls-lux">
+          <button className="control-btn-lux prev">←</button>
+          <button className="control-btn-lux next">→</button>
+        </div>
+      </section>
       </section>
 
       {/* --- CONTACT SECTION --- */}
