@@ -2,31 +2,32 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 // --- 1. ICONS IMPORTS ---
-import { 
-  FaFacebookF, FaLinkedinIn, FaInstagram, FaGithub, 
-  FaDiscord, 
+import {
+  FaFacebookF, FaLinkedinIn, FaInstagram, FaGithub,
+  FaDiscord,
   FaJava, FaPython, FaJs, FaDatabase, FaReact, FaGitAlt, FaEnvelope, FaPhone,
-  FaServer, FaNetworkWired, FaLaptopCode 
+  FaServer, FaNetworkWired, FaLaptopCode
 } from 'react-icons/fa';
 
 import myProfilePic from './profile.jpg';
 import sahanLogo from './sahan-logo.png';
 import sahanLogoNavy from './sahan-logo-navy.png';
-import { FaXTwitter } from 'react-icons/fa6'; 
+import { FaXTwitter } from 'react-icons/fa6';
 
 // --- 3. IMAGE IMPORTS ---
 import heroBg from './hero-bg.png';
 import voiceImg from './voice-assistant.png';
 import libraryImg from './library-system.png';
 import travelImg from './travel-api.png';
-import ecommerceImg from './ecommerce-platform.png'; 
-import cryptoImg from './crypto-tracker.png';       
+import ecommerceImg from './ecommerce-platform.png';
+import cryptoImg from './crypto-tracker.png';
 
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isLoading, setIsLoading] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -65,14 +66,14 @@ function App() {
       const sections = ['home', 'about', 'resume', 'projects', 'contact'];
       const scrollY = window.scrollY;
       const viewportHeight = window.innerHeight;
-      const triggerPoint = scrollY + (viewportHeight * 0.3);
+      const triggerPoint = scrollY > 10 ? scrollY + (viewportHeight * 0.3) : 0;
 
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
           if (
-            triggerPoint >= offsetTop && 
+            triggerPoint >= offsetTop &&
             triggerPoint < offsetTop + offsetHeight
           ) {
             setActiveSection(section);
@@ -85,7 +86,7 @@ function App() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    
+
     // Cleanup
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -93,18 +94,30 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleNavbarScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', handleNavbarScroll);
+    return () => window.removeEventListener('scroll', handleNavbarScroll);
+  }, []);
+
   const iconStyle = { marginRight: '8px', verticalAlign: 'middle' };
 
   return (
     <div className="App">
-      
+
       {/* --- PRELOADER --- */}
       {isLoading && (
         <div className={`preloader ${isFadingOut ? 'fade-out' : ''}`}>
-          <img src={sahanLogoNavy} alt="Sahan Adithya" className="preloader-signature" />
+          <img src={sahanLogo} alt="Sahan Adithya" className="preloader-signature" />
         </div>
       )}
-      <nav className="navbar">
+      <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-logo">
           <img src={sahanLogoNavy} alt="Sahan" className="nav-signature" />
         </div>
@@ -121,14 +134,26 @@ function App() {
 
       {/* --- HERO SECTION --- */}
       <header id="home" className="hero-section">
-        <div className="hero-content">
-          <h1 className="hero-title">Bold Ideas That <br />Start With Vision.</h1>
-          <p className="hero-subtitle">
-            Strategic code for better user journeys, robust backend systems, and elegant digital innovation.
-          </p>
-          <button className="btn-get-in-touch" onClick={() => scrollToSection('contact')}>
-            Get In Touch ↗
-          </button>
+        <div className="hero-container-lux">
+          <div className="hero-main-content">
+            <h1 className="hero-title-lux">Sahan Adithya</h1>
+            <p className="hero-tagline-lux">Web Desighner & Developer.</p>
+            <div className="hero-actions-lux">
+              <button className="btn-primary-lux" onClick={() => scrollToSection('contact')}>Get In Touch</button>
+              <button className="btn-secondary-lux" onClick={() => scrollToSection('projects')}>View Projects</button>
+            </div>
+          </div>
+
+          <div className="hero-footer-lux">
+            <div className="hero-description-lux">
+              <p>
+                Premium web desighn, development and SEO services to help your business stand out in the digital world.
+              </p>
+            </div>
+            <div className="hero-scroll-lux">
+              <span>Scroll Down ↓</span>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -139,10 +164,10 @@ function App() {
             <h3>ABOUT</h3>
             <p className="email">adithyasahan09@gmail.com</p>
             <p className="bio">
-              "Motivated Computer Science student at University of Westminster with a strong foundation 
-              in software engineering and algorithms. I am passionate about building scalable web applications 
-              and solving complex problems through code. Currently honing my skills in Java and Python, 
-              I am seeking opportunities to apply my technical knowledge in a real-world setting. Let's build 
+              "Motivated Computer Science student at University of Westminster with a strong foundation
+              in software engineering and algorithms. I am passionate about building scalable web applications
+              and solving complex problems through code. Currently honing my skills in Java and Python,
+              I am seeking opportunities to apply my technical knowledge in a real-world setting. Let's build
               something impactful."
             </p>
             <div className="location-info">
@@ -159,34 +184,34 @@ function App() {
       {/* --- RESUME SECTION --- */}
       <section id="resume" className="resume-section">
         <div className="resume-stack">
-          
+
           {/* SOFTWARE SKILLS */}
           <div className="resume-block fade-in-section">
             <h4>SOFTWARE SKILLS</h4>
             <div className="two-column-list">
               <div className="skill-bar">
                 <div className="skill-info"><span><FaJava style={iconStyle} /> Java</span><span>90%</span></div>
-                <div className="bar-bg"><div className="bar-fill" style={{width: '90%'}}></div></div>
+                <div className="bar-bg"><div className="bar-fill" style={{ width: '90%' }}></div></div>
               </div>
               <div className="skill-bar">
                 <div className="skill-info"><span><FaPython style={iconStyle} /> Python</span><span>85%</span></div>
-                <div className="bar-bg"><div className="bar-fill" style={{width: '85%'}}></div></div>
+                <div className="bar-bg"><div className="bar-fill" style={{ width: '85%' }}></div></div>
               </div>
               <div className="skill-bar">
                 <div className="skill-info"><span><FaJs style={iconStyle} /> JavaScript</span><span>80%</span></div>
-                <div className="bar-bg"><div className="bar-fill" style={{width: '80%'}}></div></div>
+                <div className="bar-bg"><div className="bar-fill" style={{ width: '80%' }}></div></div>
               </div>
               <div className="skill-bar">
                 <div className="skill-info"><span><FaDatabase style={iconStyle} /> SQL / Database</span><span>85%</span></div>
-                <div className="bar-bg"><div className="bar-fill" style={{width: '85%'}}></div></div>
+                <div className="bar-bg"><div className="bar-fill" style={{ width: '85%' }}></div></div>
               </div>
               <div className="skill-bar">
                 <div className="skill-info"><span><FaReact style={iconStyle} /> React / Web</span><span>60%</span></div>
-                <div className="bar-bg"><div className="bar-fill" style={{width: '60%'}}></div></div>
+                <div className="bar-bg"><div className="bar-fill" style={{ width: '60%' }}></div></div>
               </div>
               <div className="skill-bar">
                 <div className="skill-info"><span><FaGitAlt style={iconStyle} /> Git / Version Control</span><span>75%</span></div>
-                <div className="bar-bg"><div className="bar-fill" style={{width: '75%'}}></div></div>
+                <div className="bar-bg"><div className="bar-fill" style={{ width: '75%' }}></div></div>
               </div>
             </div>
           </div>
@@ -215,7 +240,7 @@ function App() {
               I combine technical expertise with creative problem-solving to build robust and user-centric digital solutions.
             </p>
             <div className="services-grid">
-              
+
               <div className="service-card">
                 <div className="service-icon"><FaServer /></div>
                 <h5>Backend Development</h5>
@@ -255,9 +280,9 @@ function App() {
 
         <div className="projects-scroll-container">
           <div className="projects-track">
-            
+
             {/* === SET 1: ORIGINAL CARDS === */}
-            
+
             {/* Project 1 */}
             <div className="project-card">
               <div className="image-container">
@@ -340,7 +365,7 @@ function App() {
 
 
             {/* === SET 2: DUPLICATE CARDS (For Seamless Loop) === */}
-            
+
             {/* Project 1 Duplicate */}
             <div className="project-card">
               <div className="image-container">
