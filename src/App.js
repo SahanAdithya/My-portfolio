@@ -10,6 +10,8 @@ import {
 } from 'react-icons/fa';
 
 import myProfilePic from './profile.jpg';
+import sahanLogo from './sahan-logo.png';
+import sahanLogoNavy from './sahan-logo-navy.png';
 import { FaXTwitter } from 'react-icons/fa6'; 
 
 // --- 3. IMAGE IMPORTS ---
@@ -22,6 +24,8 @@ import cryptoImg from './crypto-tracker.png';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -29,6 +33,17 @@ function App() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // --- PRELOADER TIMEOUT ---
+  useEffect(() => {
+    // Start fading out after zoom animation finishes (3s)
+    const timer = setTimeout(() => {
+      setIsFadingOut(true);
+      // Remove from DOM after background fade finishes
+      setTimeout(() => setIsLoading(false), 800);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // --- SCROLL SPY & ANIMATION LOGIC ---
   useEffect(() => {
@@ -82,36 +97,44 @@ function App() {
   return (
     <div className="App">
       
-      {/* --- NAVIGATION --- */}
+      {/* --- PRELOADER --- */}
+      {isLoading && (
+        <div className={`preloader ${isFadingOut ? 'fade-out' : ''}`}>
+          <img src={sahanLogoNavy} alt="Sahan Adithya" className="preloader-signature" />
+        </div>
+      )}
       <nav className="navbar">
+        <div className="nav-logo">
+          <img src={sahanLogoNavy} alt="Sahan" className="nav-signature" />
+        </div>
         <div className="nav-links">
-          <span className={activeSection === 'home' ? 'active' : ''} onClick={() => scrollToSection('home')}>Home</span>
-          <span className={activeSection === 'about' ? 'active' : ''} onClick={() => scrollToSection('about')}>About</span>
-          <span className={activeSection === 'resume' ? 'active' : ''} onClick={() => scrollToSection('resume')}>Resume</span>
+          <span className={activeSection === 'about' ? 'active' : ''} onClick={() => scrollToSection('about')}>About Me</span>
+          <span onClick={() => scrollToSection('resume')}>Services</span>
           <span className={activeSection === 'projects' ? 'active' : ''} onClick={() => scrollToSection('projects')}>Projects</span>
           <span className={activeSection === 'contact' ? 'active' : ''} onClick={() => scrollToSection('contact')}>Contact</span>
         </div>
-        <div className="phone-number">adithyasahan09@gmail.com</div>
+        <div className="nav-button">
+          <button className="btn-work-together" onClick={() => scrollToSection('contact')}>Let's Work Together</button>
+        </div>
       </nav>
 
       {/* --- HERO SECTION --- */}
       <header id="home" className="hero-section">
-        <div className="hero-overlay">
-          <div className="name-container fade-in-section">
-            <h2 className="first-name">SAHAN</h2>
-            <h1 className="last-name">ADITHYA</h1>
-            <p className="subtitle">Computer Science Student</p>
-            <div className="hero-buttons">
-              <button className="btn-outline" onClick={() => scrollToSection('resume')}>Resume</button>
-              <button className="btn-outline" onClick={() => scrollToSection('projects')}>My Projects</button>
-            </div>
-          </div>
-          <div className="social-icons fade-in-section">
+        <div className="hero-background-text">
+          <span className="bg-text-filled">Sahan</span>
+          <span className="bg-text-outline">Adithya</span>
+        </div>
+        <div className="hero-content">
+          <h1 className="hero-title">SOFTWARE ENGINEER & DEVELOPER</h1>
+          <p className="hero-subtitle">
+            Strategic code for better user journeys, robust backend systems, and higher ROI.
+          </p>
+          <div className="social-icons">
             <a href="https://www.linkedin.com/in/sahan-adithya-32a941359/" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
-              <a href="https://github.com/SahanAdithya" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-              <a href="https://www.facebook.com/sahan.adithya.311" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
-              <a href="https://www.instagram.com/__.sahan.adithya.__/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-              <a href="https://x.com/sahan_adithya09" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
+            <a href="https://github.com/SahanAdithya" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+            <a href="https://www.facebook.com/sahan.adithya.311" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+            <a href="https://www.instagram.com/__.sahan.adithya.__/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+            <a href="https://x.com/sahan_adithya09" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
           </div>
         </div>
       </header>
