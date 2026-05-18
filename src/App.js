@@ -269,19 +269,7 @@ function App() {
           <p>Explore some of my most impactful projects and technical experiments.</p>
         </div>
 
-        {/* Category Filters */}
-        <div className="projects-filters-lux">
-          <div className="filter-pills-lux">
-            <button className="filter-pill active">All</button>
-            <button className="filter-pill">Java</button>
-            <button className="filter-pill">React</button>
-            <button className="filter-pill">Python</button>
-            <button className="filter-pill">Database</button>
-            <button className="filter-pill">API</button>
-            <button className="filter-pill">Web</button>
-            <button className="btn-view-more-lux">View More →</button>
-          </div>
-        </div>
+
 
         {/* Placeholder Container */}
         <div className="projects-empty-container-lux">
