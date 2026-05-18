@@ -11,17 +11,12 @@ import {
 import { SiNextdotjs, SiTailwindcss, SiRaspberrypi } from 'react-icons/si';
 
 
-import sahanLogo from './sahan-logo.png';
-import sahanLogoNavy from './sahan-logo-navy.png';
+import sahanLogo from './sahan-logo.webp';
+import sahanLogoNavy from './sahan-logo-navy.webp';
 import { FaXTwitter } from 'react-icons/fa6';
 
 // --- 3. IMAGE IMPORTS ---
-import heroBg from './hero-bg.png';
-import voiceImg from './voice-assistant.png';
-import libraryImg from './library-system.png';
-import travelImg from './travel-api.png';
-import ecommerceImg from './ecommerce-platform.png';
-import cryptoImg from './crypto-tracker.png';
+import heroBg from './hero-bg.webp';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
@@ -288,60 +283,9 @@ function App() {
           </div>
         </div>
 
-        {/* Carousel Container */}
-        <div className="projects-carousel-container-lux">
-          <div className="projects-carousel-lux">
-            {/* Project Card 1 */}
-            <div className="project-card-lux">
-              <img src={voiceImg} alt="AI Voice Assistant" />
-              <div className="card-overlay-lux">
-                <h3>AI Voice Assistant</h3>
-                <p>Automating tasks with NLP</p>
-              </div>
-            </div>
-
-            {/* Project Card 2 */}
-            <div className="project-card-lux">
-              <img src={libraryImg} alt="Library System" />
-              <div className="card-overlay-lux">
-                <h3>Library System</h3>
-                <p>Java & MySQL Database</p>
-              </div>
-            </div>
-
-            {/* Project Card 3 */}
-            <div className="project-card-lux">
-              <img src={travelImg} alt="Travel Booking API" />
-              <div className="card-overlay-lux">
-                <h3>Travel Booking API</h3>
-                <p>Node.js RESTful Platform</p>
-              </div>
-            </div>
-
-            {/* Project Card 4 */}
-            <div className="project-card-lux">
-              <img src={ecommerceImg} alt="E-commerce Platform" />
-              <div className="card-overlay-lux">
-                <h3>ShopEasy E-commerce</h3>
-                <p>Full-stack React App</p>
-              </div>
-            </div>
-
-            {/* Project Card 5 */}
-            <div className="project-card-lux">
-              <img src={cryptoImg} alt="Crypto Tracker" />
-              <div className="card-overlay-lux">
-                <h3>Crypto Tracker</h3>
-                <p>Real-time Market Dashboard</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Carousel Controls */}
-        <div className="carousel-controls-lux">
-          <button className="control-btn-lux prev">←</button>
-          <button className="control-btn-lux next">→</button>
+        {/* Placeholder Container */}
+        <div className="projects-empty-container-lux">
+          <p className="no-projects-message">Creative Portfolio In Progress. Coming Soon...</p>
         </div>
       </section>
 

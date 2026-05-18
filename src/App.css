@@ -214,7 +214,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('./hero-bg.png');
+  background-image: url('./hero-bg.webp');
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -427,7 +427,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('./about-bg.png');
+  background-image: url('./about-bg.webp');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -924,7 +924,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('./about-bg.png');
+  background-image: url('./about-bg.webp');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1308,4 +1308,35 @@ body {
   opacity: 1;
   transform: none;
   /* Returns to normal position */
+}
+
+/* --- EMPTY PROJECTS PLACEHOLDER --- */
+.projects-empty-container-lux {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px;
+  width: 100%;
+  padding: 0 5%;
+}
+
+.no-projects-message {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #888;
+  text-align: center;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  animation: pulse-lux 3s infinite ease-in-out;
+}
+
+@keyframes pulse-lux {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
 }
