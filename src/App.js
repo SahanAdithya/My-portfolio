@@ -373,12 +373,16 @@ function App() {
                 key={project.id}
                 className={`project-card-coverflow ${index === activeProjectIndex ? 'active' : ''}`}
                 style={getCardStyle(index)}
-                onClick={() => setActiveProjectIndex(index)}
+                onClick={() => {
+                  if (index === activeProjectIndex) {
+                    setIsDetailOpen(true);
+                  } else {
+                    setActiveProjectIndex(index);
+                  }
+                }}
                 onMouseEnter={() => {
                   setActiveProjectIndex(index);
-                  setHoveredProjectIndex(index);
                 }}
-                onMouseLeave={() => setHoveredProjectIndex(null)}
               >
                 {/* Sleek outer glow border */}
                 <div 
@@ -424,23 +428,27 @@ function App() {
         </div>
 
         {/* Full-section Hover Details Overlay */}
-        <div className={`projects-hover-overlay-lux ${hoveredProjectIndex !== null ? 'visible' : ''}`}>
-          {hoveredProjectIndex !== null && (
-            <div className="hover-overlay-content">
-              <h3 style={{ color: projects[hoveredProjectIndex].color }}>
-                {projects[hoveredProjectIndex].title}
+        <div 
+          className={`projects-hover-overlay-lux ${isDetailOpen ? 'visible' : ''}`}
+          onClick={() => setIsDetailOpen(false)}
+        >
+          <div className="hover-overlay-close-btn" onClick={() => setIsDetailOpen(false)}>✕</div>
+          {isDetailOpen && (
+            <div className="hover-overlay-content" onClick={(e) => e.stopPropagation()}>
+              <h3 style={{ color: activeProject.color }}>
+                {activeProject.title}
               </h3>
               <p className="hover-overlay-description">
-                {projects[hoveredProjectIndex].description}
+                {activeProject.description}
               </p>
               <div className="hover-overlay-tech">
-                {projects[hoveredProjectIndex].tech.map((tag) => (
+                {activeProject.tech.map((tag) => (
                   <span 
                     key={tag} 
                     className="tech-badge-overlay" 
                     style={{ 
-                      borderColor: projects[hoveredProjectIndex].color, 
-                      color: projects[hoveredProjectIndex].color 
+                      borderColor: activeProject.color, 
+                      color: activeProject.color 
                     }}
                   >
                     {tag}
