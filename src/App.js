@@ -27,6 +27,96 @@ function App() {
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const [activeProjectIndex, setActiveProjectIndex] = useState(2); // Folio is the middle card by default
+
+  const projects = [
+    {
+      id: 'read-later',
+      title: 'Read Later AI',
+      subtitle: 'AI Summarizer & Reading List',
+      largeText: 'READ',
+      color: '#00d2ff',
+      tech: ['React', 'Python', 'FastAPI', 'Gemini AI'],
+      description: 'An AI-powered reading companion that scrapes articles, generates concise summaries, and categorizes content using custom tags.',
+      image: ''
+    },
+    {
+      id: 'cohort',
+      title: 'Cohort App',
+      subtitle: 'Next.js Study Platform',
+      largeText: 'COHORT',
+      color: '#ff2a5f',
+      tech: ['Next.js', 'Supabase', 'Clerk', 'Tailwind'],
+      description: 'A modern study group collaboration platform featuring interactive classrooms, real-time whiteboards, and Supabase backend integration.',
+      image: ''
+    },
+    {
+      id: 'folio',
+      title: 'Folio Engine',
+      subtitle: 'Creative Portfolio Theme',
+      largeText: 'FOLIO',
+      color: '#00f2fe',
+      tech: ['React', 'CSS3', 'Lenis Scroll', 'Framer'],
+      description: 'A highly polished, high-performance portfolio engine for developers and designers with fluid animations and responsive glassmorphism styles.',
+      image: ''
+    },
+    {
+      id: 'barter',
+      title: 'Barter Marketplace',
+      subtitle: 'P2P Swapping System',
+      largeText: 'BARTER',
+      color: '#ffd700',
+      tech: ['React', 'Node.js', 'Express', 'MongoDB'],
+      description: 'A peer-to-peer item swapping marketplace utilizing advanced matching algorithms to connect traders and facilitate zero-cash exchanges.',
+      image: ''
+    },
+    {
+      id: 'tweaks',
+      title: 'Tweaks Panel',
+      subtitle: 'Dynamic Theme Dashboard',
+      largeText: 'TWEAKS',
+      color: '#b026ff',
+      tech: ['React', 'Local Storage', 'CSS Variables'],
+      description: 'A lightweight settings panel enabling developers to live-tweak layouts, toggle theme variables, and visualize UI components in real-time.',
+      image: ''
+    }
+  ];
+
+  const activeProject = projects[activeProjectIndex];
+
+  const getCardStyle = (index) => {
+    const offset = index - activeProjectIndex;
+    const absOffset = Math.abs(offset);
+    
+    // Scale down cards as they get further from center
+    const scale = 1 - absOffset * 0.15; 
+    
+    // Translate X: active is 0, left is negative, right is positive
+    let translateX = offset * 240; // base offset
+    if (offset < 0) {
+      translateX += 40; 
+    } else if (offset > 0) {
+      translateX -= 40; 
+    }
+    
+    // Rotate Y
+    const rotateY = offset * -25;
+    
+    // Z-index
+    const zIndex = 10 - absOffset;
+    
+    // Opacity
+    const opacity = absOffset > 2 ? 0 : (1 - absOffset * 0.25);
+    const pointerEvents = absOffset > 2 ? 'none' : 'auto';
+
+    return {
+      transform: `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg)`,
+      zIndex,
+      opacity,
+      pointerEvents,
+    };
+  };
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -262,18 +352,88 @@ function App() {
 
 
 
-      {/* --- PROJECTS SECTION (Interactive Carousel) --- */}
+      {/* --- PROJECTS SECTION (3D Coverflow Carousel) --- */}
       <section id="projects" className="projects-section-lux fade-in-section">
         <div className="section-header-lux">
           <h2>My Adventures in Code</h2>
           <p>Explore some of my most impactful projects and technical experiments.</p>
         </div>
 
+        <div className="coverflow-container-lux">
+          {/* Dynamic background glow matching the active project's color */}
+          <div 
+            className="coverflow-bg-glow" 
+            style={{ '--active-color': activeProject.color }}
+          ></div>
+          
+          <div className="coverflow-slider-lux">
+            {projects.map((project, index) => (
+              <div 
+                key={project.id}
+                className={`project-card-coverflow ${index === activeProjectIndex ? 'active' : ''}`}
+                style={getCardStyle(index)}
+                onClick={() => setActiveProjectIndex(index)}
+              >
+                {/* Sleek outer glow border */}
+                <div 
+                  className="card-glow-border" 
+                  style={{ '--accent-color': project.color }}
+                ></div>
+                
+                {/* Glassy card body */}
+                <div className="card-inner-body">
+                  {/* Stylized background outline letters */}
+                  <div className="card-large-outline-text">{project.largeText}</div>
 
+                  {/* Optional background image - free space for user */}
+                  {project.image ? (
+                    <img src={project.image} alt={project.title} className="card-bg-image" />
+                  ) : (
+                    <div className="card-bg-gradient"></div>
+                  )}
 
-        {/* Placeholder Container */}
-        <div className="projects-empty-container-lux">
-          <p className="no-projects-message">Creative Portfolio In Progress. Coming Soon...</p>
+                  {/* Bottom Text metadata */}
+                  <div className="card-project-info">
+                    <h3 className="card-project-title">{project.title}</h3>
+                    <p className="card-project-subtitle" style={{ color: project.color }}>
+                      {project.subtitle}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Pagination Indicators */}
+          <div className="coverflow-pagination">
+            {projects.map((_, index) => (
+              <span 
+                key={index} 
+                className={`pagination-dot ${index === activeProjectIndex ? 'active' : ''}`}
+                style={{ '--active-color': activeProject.color }}
+                onClick={() => setActiveProjectIndex(index)}
+              ></span>
+            ))}
+          </div>
+        </div>
+
+        {/* Detailed Info Pane for the Active Project */}
+        <div className="active-project-details-lux">
+          <div className="project-detail-content">
+            <h3 style={{ color: activeProject.color }}>{activeProject.title}</h3>
+            <p className="project-detail-description">{activeProject.description}</p>
+            <div className="project-detail-tech">
+              {activeProject.tech.map((tag) => (
+                <span 
+                  key={tag} 
+                  className="tech-badge" 
+                  style={{ borderColor: activeProject.color, color: activeProject.color }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
