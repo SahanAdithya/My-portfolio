@@ -31,31 +31,6 @@ function App() {
 
   const [activeProjectIndex, setActiveProjectIndex] = useState(2); // Folio is the middle card by default
   const [isDetailOpen, setIsDetailOpen] = useState(false);
-  const [activeExpertise, setActiveExpertise] = useState(0);
-
-  const expertiseAreas = [
-    {
-      title: 'Full Stack',
-      label: 'WEB',
-      icon: '< >',
-      description: 'Building scalable, high-performance web applications with modern frameworks. From interactive user interfaces to robust backend architectures.',
-      skills: ['React', 'Next.js', 'Node.js', 'TypeScript']
-    },
-    {
-      title: 'IoT Development',
-      label: 'IOT',
-      icon: '⊕',
-      description: 'Designing connected systems and smart devices using embedded platforms. Integrating sensors, microcontrollers, and cloud services for real-time data.',
-      skills: ['Raspberry Pi', 'Arduino', 'MQTT', 'Python']
-    },
-    {
-      title: 'ML / AI',
-      label: 'ML',
-      icon: '☰',
-      description: 'Developing intelligent systems powered by machine learning and artificial intelligence. From data preprocessing to model deployment and inference.',
-      skills: ['TensorFlow', 'OpenCV', 'Python', 'FastAPI']
-    }
-  ];
 
   const projects = [
     {
@@ -526,56 +501,6 @@ function App() {
 
             </div>
           )}
-        </div>
-      </section>
-
-      {/* --- RESUME SECTION --- */}
-      <section id="resume" className="resume-section fade-in-section">
-        <div className="resume-layout">
-          {/* Left Column */}
-          <div className="resume-left">
-            <h2 className="resume-heading">Resume</h2>
-            <div className="resume-label-row">
-              <span className="resume-label-line"></span>
-              <span className="resume-label-text">CORE EXPERTISE</span>
-            </div>
-
-            <div className="resume-expertise-detail">
-              <div className="resume-expertise-icon">{expertiseAreas[activeExpertise].icon}</div>
-              <h3 className="resume-expertise-title">{expertiseAreas[activeExpertise].title}</h3>
-            </div>
-
-            <p className="resume-expertise-desc">
-              {expertiseAreas[activeExpertise].description}
-            </p>
-
-            <div className="resume-skill-pills">
-              {expertiseAreas[activeExpertise].skills.map((skill) => (
-                <span key={skill} className="resume-skill-pill">{skill}</span>
-              ))}
-            </div>
-
-            <a href="#" className="resume-download-btn" target="_blank" rel="noreferrer">
-              View Full Resume <span className="resume-btn-arrow">↗</span>
-            </a>
-          </div>
-
-          {/* Right Column - Expertise List */}
-          <div className="resume-right">
-            {expertiseAreas.map((area, index) => (
-              <div
-                key={area.title}
-                className={`resume-expertise-row ${index === activeExpertise ? 'active' : ''}`}
-                onClick={() => setActiveExpertise(index)}
-              >
-                <span className="row-title">{area.title}</span>
-                <div className="row-right">
-                  <span className="row-label">{area.label}</span>
-                  <span className="row-icon">{area.icon}</span>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
