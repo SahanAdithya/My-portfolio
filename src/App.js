@@ -17,6 +17,8 @@ import { FaXTwitter } from 'react-icons/fa6';
 
 // --- 3. IMAGE IMPORTS ---
 import heroBg from './hero-bg.webp';
+import adorixImg from './adorix.webp';
+import electricityAnalystImg from './electricity-analyst.webp';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
@@ -39,7 +41,9 @@ function App() {
       color: '#00d2ff',
       tech: ['React', 'Python', 'FastAPI', 'Gemini AI'],
       description: 'An AI-powered reading companion that scrapes articles, generates concise summaries, and categorizes content using custom tags.',
-      image: ''
+      image: '',
+      status: '(TECHNICAL EXPERIMENT - COMPLETE)',
+      link: 'https://github.com/SahanAdithya'
     },
     {
       id: 'cohort',
@@ -49,27 +53,33 @@ function App() {
       color: '#ff2a5f',
       tech: ['Next.js', 'Supabase', 'Clerk', 'Tailwind'],
       description: 'A modern study group collaboration platform featuring interactive classrooms, real-time whiteboards, and Supabase backend integration.',
-      image: ''
+      image: '',
+      status: '(2ND YEAR PROJECT - ONGOING)',
+      link: 'https://github.com/SahanAdithya'
     },
     {
-      id: 'folio',
-      title: 'Folio Engine',
-      subtitle: 'Creative Portfolio Theme',
-      largeText: 'FOLIO',
+      id: 'adorix',
+      title: 'Adorix',
+      subtitle: 'AI Interactive Kiosk',
+      largeText: 'ADORIX',
       color: '#00f2fe',
-      tech: ['React', 'CSS3', 'Lenis Scroll', 'Framer'],
-      description: 'A highly polished, high-performance portfolio engine for developers and designers with fluid animations and responsive glassmorphism styles.',
-      image: ''
+      tech: ['React', 'Python', 'OpenCV', 'FastAPI', 'TensorFlow'],
+      description: 'Adorix transforms static screens into intelligent agents. Track motion, interact with voice, and serve personalized content in real-time.',
+      image: adorixImg,
+      status: '(2ND YEAR PROJECT - ONGOING)',
+      link: 'https://github.com/SahanAdithya'
     },
     {
-      id: 'barter',
-      title: 'Barter Marketplace',
-      subtitle: 'P2P Swapping System',
-      largeText: 'BARTER',
+      id: 'electricity-analyst',
+      title: 'Electricity Analyst',
+      subtitle: 'electricity analysis platform',
+      largeText: 'ELECTRICITY',
       color: '#ffd700',
-      tech: ['React', 'Node.js', 'Express', 'MongoDB'],
-      description: 'A peer-to-peer item swapping marketplace utilizing advanced matching algorithms to connect traders and facilitate zero-cash exchanges.',
-      image: ''
+      tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js'],
+      description: 'An intelligent electricity analysis platform designed to track power usage, analyze energy efficiency, and provide personalized insights for optimizing electricity consumption.',
+      image: electricityAnalystImg,
+      status: '(ACADEMIC WORK - COMPLETE)',
+      link: 'https://github.com/SahanAdithya'
     },
     {
       id: 'tweaks',
@@ -79,7 +89,9 @@ function App() {
       color: '#b026ff',
       tech: ['React', 'Local Storage', 'CSS Variables'],
       description: 'A lightweight settings panel enabling developers to live-tweak layouts, toggle theme variables, and visualize UI components in real-time.',
-      image: ''
+      image: '',
+      status: '(TECHNICAL TOOL - COMPLETE)',
+      link: 'https://github.com/SahanAdithya'
     }
   ];
 
@@ -360,7 +372,10 @@ function App() {
           <p>Explore some of my most impactful projects and technical experiments.</p>
         </div>
 
-        <div className="coverflow-container-lux">
+        <div 
+          className="coverflow-container-lux"
+          onMouseLeave={() => setActiveProjectIndex(2)}
+        >
           {/* Dynamic background glow matching the active project's color */}
           <div 
             className="coverflow-bg-glow" 
@@ -384,16 +399,11 @@ function App() {
                   setActiveProjectIndex(index);
                 }}
               >
-                {/* Sleek outer glow border */}
-                <div 
-                  className="card-glow-border" 
-                  style={{ '--accent-color': project.color }}
-                ></div>
+
                 
                 {/* Glassy card body */}
                 <div className="card-inner-body">
-                  {/* Stylized background outline letters */}
-                  <div className="card-large-outline-text">{project.largeText}</div>
+
 
                   {/* Optional background image - free space for user */}
                   {project.image ? (
@@ -433,28 +443,52 @@ function App() {
           onClick={() => setIsDetailOpen(false)}
         >
           <div className="hover-overlay-close-btn" onClick={() => setIsDetailOpen(false)}>✕</div>
+          
           {isDetailOpen && (
-            <div className="hover-overlay-content" onClick={(e) => e.stopPropagation()}>
-              <h3 style={{ color: activeProject.color }}>
-                {activeProject.title}
-              </h3>
-              <p className="hover-overlay-description">
-                {activeProject.description}
-              </p>
-              <div className="hover-overlay-tech">
-                {activeProject.tech.map((tag) => (
-                  <span 
-                    key={tag} 
-                    className="tech-badge-overlay" 
-                    style={{ 
-                      borderColor: activeProject.color, 
-                      color: activeProject.color 
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
+            <div className="hover-overlay-content-structured" onClick={(e) => e.stopPropagation()}>
+              
+              {/* Left Column: Image Box */}
+              <div className="overlay-image-column">
+                {activeProject.image ? (
+                  <img src={activeProject.image} alt={activeProject.title} className="overlay-project-img" />
+                ) : (
+                  <div className="overlay-image-placeholder" style={{ '--accent-color': activeProject.color }}>
+                    <span style={{ color: activeProject.color }}>{activeProject.title}</span>
+                  </div>
+                )}
               </div>
+
+              {/* Right Column: Structured Details */}
+              <div className="overlay-details-column">
+                <div className="details-header-tag">About the project</div>
+                <div className="details-project-status">{activeProject.status}</div>
+                <h2 className="details-project-title">{activeProject.title}</h2>
+                
+                <p className="details-project-description">
+                  {activeProject.description}
+                </p>
+
+                <a 
+                  href={activeProject.link || '#'} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="details-view-more"
+                >
+                  View More <span className="arrow">↗</span>
+                </a>
+
+                <div className="details-tech-section">
+                  <div className="tech-section-title">TECHNOLOGIES</div>
+                  <div className="details-tech-grid">
+                    {activeProject.tech.map((tag) => (
+                      <span key={tag} className="tech-badge-structured">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
             </div>
           )}
         </div>

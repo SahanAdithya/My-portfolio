@@ -116,7 +116,8 @@ body {
 }
 
 .navbar.scrolled .nav-links,
-.navbar.scrolled .nav-cta {
+.navbar.scrolled .nav-cta,
+.navbar.scrolled .nav-button {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
@@ -124,7 +125,8 @@ body {
 }
 
 .nav-links,
-.nav-cta {
+.nav-cta,
+.nav-button {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1004,26 +1006,7 @@ body {
   cursor: pointer;
 }
 
-/* Glowing Border overlay */
-.card-glow-border {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 24px;
-  border: 1.5px solid var(--accent-color);
-  opacity: 0.2;
-  transition: all 0.65s cubic-bezier(0.25, 1, 0.5, 1);
-  z-index: 3;
-  pointer-events: none;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
-}
 
-.project-card-coverflow.active .card-glow-border {
-  opacity: 0.85;
-  box-shadow: 0 0 35px var(--accent-color), inset 0 0 15px var(--accent-color);
-}
 
 /* Card inner container */
 .card-inner-body {
@@ -1033,7 +1016,6 @@ body {
   border-radius: 24px;
   overflow: hidden;
   background: #0d111d;
-  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1041,29 +1023,7 @@ body {
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45);
 }
 
-/* Large hollow background text styled like "STAY" */
-.card-large-outline-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
-  font-size: 5rem;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.15);
-  letter-spacing: 4px;
-  pointer-events: none;
-  z-index: 1;
-  text-transform: uppercase;
-  transition: all 0.65s cubic-bezier(0.25, 1, 0.5, 1);
-}
 
-.project-card-coverflow.active .card-large-outline-text {
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-  font-size: 5.4rem;
-}
 
 /* Card Background image or gradient placeholders */
 .card-bg-gradient {
@@ -1149,23 +1109,25 @@ body {
 
 
 
-/* --- FULL SECTION PROJECTS HOVER DETAILS OVERLAY --- */
+/* --- STRUCTURED PROJECTS DETAILS OVERLAY --- */
 .projects-hover-overlay-lux {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(9, 11, 19, 0.9); /* Premium dark overlay color */
-  backdrop-filter: blur(25px); /* Gorgeous high blur premium glass */
-  -webkit-backdrop-filter: blur(25px);
+  background: rgba(248, 250, 252, 0.98); /* Clean off-white background matching screenshot */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   z-index: 50;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  pointer-events: none; /* Clicking passes through to slider card underneath */
-  transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow-y: auto;
+  padding: 40px 20px;
 }
 
 .projects-hover-overlay-lux.visible {
@@ -1173,7 +1135,173 @@ body {
   pointer-events: auto; /* Enable inputs/clicks when details overlay is open */
 }
 
-/* SLEEK GLASS CLOSE BUTTON */
+/* Modal Content Container */
+.hover-overlay-content-structured {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr; /* Left column image, Right column text details */
+  gap: 60px;
+  max-width: 1200px;
+  width: 100%;
+  padding: 40px;
+  align-items: center;
+  transform: translateY(30px);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.projects-hover-overlay-lux.visible .hover-overlay-content-structured {
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .hover-overlay-content-structured {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 20px;
+    align-items: stretch;
+  }
+}
+
+/* Left Image Column */
+.overlay-image-column {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.overlay-project-img {
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Gorgeous soft shadow from screenshot */
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.overlay-image-placeholder {
+  width: 100%;
+  max-width: 620px;
+  aspect-ratio: 16/10;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.overlay-image-placeholder span {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Right Details Column */
+.overlay-details-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.details-header-tag {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.details-project-status {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.details-project-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 20px 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.details-project-description {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #334155;
+  margin: 0 0 30px 0;
+  font-weight: 400;
+}
+
+.details-view-more {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.details-view-more:hover {
+  transform: translateX(4px);
+  color: #3b82f6;
+}
+
+.details-view-more .arrow {
+  transition: transform 0.3s ease;
+}
+
+.details-view-more:hover .arrow {
+  transform: translate(2px, -2px);
+}
+
+/* Technologies Section */
+.details-tech-section {
+  width: 100%;
+}
+
+.tech-section-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.details-tech-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tech-badge-structured {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+}
+
+.tech-badge-structured:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+/* Close Button Overlays */
 .hover-overlay-close-btn {
   position: absolute;
   top: 40px;
@@ -1181,9 +1309,9 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background: rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  color: #0f172a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1194,65 +1322,10 @@ body {
 }
 
 .hover-overlay-close-btn:hover {
-  background: #ffffff;
-  color: #0b0f19;
+  background: #0f172a;
+  color: #ffffff;
   transform: scale(1.1) rotate(90deg);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-}
-
-
-.hover-overlay-content {
-  max-width: 800px;
-  padding: 40px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  transform: translateY(30px);
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform;
-}
-
-.projects-hover-overlay-lux.visible .hover-overlay-content {
-  transform: translateY(0);
-}
-
-.hover-overlay-content h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin: 0;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  letter-spacing: 0.5px;
-}
-
-.hover-overlay-description {
-  color: #e2e8f0;
-  font-size: 1.15rem;
-  line-height: 1.8;
-  margin: 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-}
-
-.hover-overlay-tech {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
-.tech-badge-overlay {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1.5px solid var(--accent-color);
-  padding: 8px 24px;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
 }
 
 /* --- CONTACT SECTION --- */
