@@ -505,33 +505,74 @@ function App() {
       </section>
 
       {/* --- CONTACT SECTION --- */}
-      <section id="contact" className="contact-section fade-in-section">
-        <div className="section-header">
-          <h2>Get In Touch</h2>
-          <div className="section-underline"></div>
+      <section id="contact" className="contact-section-new fade-in-section">
+        <div className="contact-top-row">
+          <div className="contact-heading-area">
+            <div className="contact-label-row">
+              <span className="contact-label-block"></span>
+              <span className="contact-label-block"></span>
+              <span className="contact-label-block dark"></span>
+              <span className="contact-label-text">Contact</span>
+            </div>
+            <h2 className="contact-main-title">Contact Us</h2>
+          </div>
+          <p className="contact-intro-text">
+            Explore ideas, strategies, and creative insights that help brands grow and digital experiences stand out.
+          </p>
         </div>
 
-        <div className="contact-card">
-          <h3>Send Me a Message</h3>
-          <form className="contact-form">
-            <div className="form-group">
-              <label>Your Name *</label>
-              <input type="text" placeholder="John Doe" required />
+        <div className="contact-body-row">
+          {/* Left: Info Column */}
+          <div className="contact-info-col">
+            <div className="contact-info-block">
+              <h4>Office Location</h4>
+              <p>12273 Dream Avenue, London,<br />123456 United Kingdom</p>
             </div>
-            <div className="form-group">
-              <label>Your Email *</label>
-              <input type="email" placeholder="john@example.com" required />
+            <div className="contact-info-block">
+              <h4>Office Time</h4>
+              <p>Monday - Sunday<br />11am - 7pm</p>
             </div>
-            <div className="form-group">
-              <label>Subject</label>
-              <input type="text" placeholder="Project Inquiry" />
+            <div className="contact-info-block">
+              <h4>Support</h4>
+              <p>adithyasahan09@gmail.com<br />+94 71 679 0508</p>
             </div>
-            <div className="form-group">
-              <label>Message *</label>
-              <textarea rows="5" placeholder="Hello, I'd like to talk about..." required></textarea>
-            </div>
-            <button type="submit" className="submit-btn">Send Message</button>
-          </form>
+          </div>
+
+          {/* Right: Form Column */}
+          <div className="contact-form-col">
+            <form className="contact-form-new">
+              <div className="form-row-pair">
+                <div className="form-field-new">
+                  <input type="text" placeholder="Enter your name" required />
+                </div>
+                <div className="form-field-new">
+                  <input type="email" placeholder="Email address" required />
+                </div>
+              </div>
+              <div className="form-row-pair">
+                <div className="form-field-new">
+                  <input type="text" placeholder="Company name" />
+                </div>
+                <div className="form-field-new">
+                  <input type="url" placeholder="www.example.com" />
+                </div>
+              </div>
+              <div className="form-field-new full-width">
+                <select required defaultValue="">
+                  <option value="" disabled>Select your services</option>
+                  <option value="web-design">Web Design</option>
+                  <option value="web-dev">Web Development</option>
+                  <option value="mobile-app">Mobile App</option>
+                  <option value="branding">Branding</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div className="form-field-new full-width">
+                <textarea rows="3" placeholder="Project description" required></textarea>
+              </div>
+              <button type="submit" className="contact-submit-btn">Send Message →</button>
+            </form>
+          </div>
         </div>
       </section>
 
