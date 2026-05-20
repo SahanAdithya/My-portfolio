@@ -911,7 +911,7 @@ body {
 /* --- PROJECTS SECTION (Interactive Carousel LUX) --- */
 .projects-section-lux {
   padding: 120px 0 80px 0;
-  background-color: #0b0f19; /* Dark moody color matching album covers */
+  background-color: var(--bg-secondary);
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -929,8 +929,8 @@ body {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  filter: blur(4px) brightness(0.2); /* Much darker to pop neon lights */
-  opacity: 0.85;
+  filter: blur(2px);
+  opacity: 0.6;
   pointer-events: none;
   z-index: -1;
 }
@@ -944,12 +944,12 @@ body {
 .section-header-lux h2 {
   font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
-  color: #ffffff; /* White text for contrast */
+  color: #111; /* Dark title matching About page style */
   margin-bottom: 15px;
 }
 
 .section-header-lux p {
-  color: #a0aec0; /* Lighter text for contrast */
+  color: #666; /* Subtitle matching About page style */
   font-size: 1.1rem;
 }
 
