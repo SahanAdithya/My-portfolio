@@ -1111,23 +1111,22 @@ body {
 
 /* --- STRUCTURED PROJECTS DETAILS OVERLAY --- */
 .projects-hover-overlay-lux {
-  position: absolute;
+  position: fixed; /* Fixed over the full viewport */
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(248, 250, 252, 0.98); /* Clean off-white background matching screenshot */
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.4); /* Semi-transparent backdrop shadow */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 2000; /* Float high above everything */
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-  overflow-y: auto;
-  padding: 40px 20px;
+  transition: opacity 0.4s ease;
+  padding: 20px;
 }
 
 .projects-hover-overlay-lux.visible {
@@ -1137,27 +1136,36 @@ body {
 
 /* Modal Content Container */
 .hover-overlay-content-structured {
+  position: relative; /* Relative for close button placement */
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr; /* Left column image, Right column text details */
-  gap: 60px;
-  max-width: 1200px;
+  grid-template-columns: 1.1fr 0.9fr; /* Split layout */
+  gap: 50px;
+  max-width: 1100px;
   width: 100%;
-  padding: 40px;
+  max-height: 90vh; /* Max height to avoid spilling offscreen */
+  overflow-y: auto; /* Scrollable if content overflows */
+  background: #f8fafc; /* Pristine off-white card background */
+  border-radius: 30px; /* Gorgeous high-rounded corners */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Thin elegant card border */
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25); /* Deep premium depth shadow */
+  padding: 50px;
   align-items: center;
-  transform: translateY(30px);
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+  opacity: 0;
 }
 
 .projects-hover-overlay-lux.visible .hover-overlay-content-structured {
-  transform: translateY(0);
+  transform: scale(1) translateY(0);
+  opacity: 1;
 }
 
 @media (max-width: 900px) {
   .hover-overlay-content-structured {
     grid-template-columns: 1fr;
-    gap: 40px;
-    padding: 20px;
-    align-items: stretch;
+    gap: 35px;
+    padding: 40px 25px;
+    max-height: 95vh;
   }
 }
 
@@ -1304,10 +1312,10 @@ body {
 /* Close Button Overlays */
 .hover-overlay-close-btn {
   position: absolute;
-  top: 40px;
-  right: 40px;
-  width: 50px;
-  height: 50px;
+  top: 25px;
+  right: 25px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background: rgba(15, 23, 42, 0.05);
   border: 1px solid rgba(15, 23, 42, 0.08);
@@ -1315,9 +1323,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.3s ease;
   z-index: 100;
 }
 
@@ -1325,7 +1333,7 @@ body {
   background: #0f172a;
   color: #ffffff;
   transform: scale(1.1) rotate(90deg);
-  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.15);
 }
 
 /* --- CONTACT SECTION --- */

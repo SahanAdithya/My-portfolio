@@ -442,10 +442,10 @@ function App() {
           className={`projects-hover-overlay-lux ${isDetailOpen ? 'visible' : ''}`}
           onClick={() => setIsDetailOpen(false)}
         >
-          <div className="hover-overlay-close-btn" onClick={() => setIsDetailOpen(false)}>✕</div>
-          
           {isDetailOpen && (
             <div className="hover-overlay-content-structured" onClick={(e) => e.stopPropagation()}>
+              {/* Sleek Close Button directly inside the card */}
+              <div className="hover-overlay-close-btn" onClick={() => setIsDetailOpen(false)}>✕</div>
               
               {/* Left Column: Image Box */}
               <div className="overlay-image-column">
