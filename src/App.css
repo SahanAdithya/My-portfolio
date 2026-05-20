@@ -1147,60 +1147,7 @@ body {
   box-shadow: 0 0 12px var(--active-color);
 }
 
-/* --- ACTIVE PROJECT DETAILS PANE --- */
-.active-project-details-lux {
-  max-width: 800px;
-  margin: 40px auto 0;
-  padding: 0 5%;
-  z-index: 2;
-  position: relative;
-}
 
-.project-detail-content {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 40px;
-  border-radius: 24px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  transition: all 0.5s ease;
-}
-
-.project-detail-content h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  margin: 0 0 20px 0;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  transition: color 0.5s ease;
-}
-
-.project-detail-description {
-  color: #cbd5e1;
-  font-size: 1.05rem;
-  line-height: 1.8;
-  margin: 0 0 30px 0;
-}
-
-.project-detail-tech {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.tech-badge {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 8px 20px;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  transition: all 0.5s ease;
-  letter-spacing: 0.5px;
-}
 
 /* --- CONTACT SECTION --- */
 .contact-section {
