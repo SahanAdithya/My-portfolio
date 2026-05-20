@@ -28,6 +28,7 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const [activeProjectIndex, setActiveProjectIndex] = useState(2); // Folio is the middle card by default
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
 
   const projects = [
     {
@@ -373,6 +374,11 @@ function App() {
                 className={`project-card-coverflow ${index === activeProjectIndex ? 'active' : ''}`}
                 style={getCardStyle(index)}
                 onClick={() => setActiveProjectIndex(index)}
+                onMouseEnter={() => {
+                  setActiveProjectIndex(index);
+                  setHoveredProjectIndex(index);
+                }}
+                onMouseLeave={() => setHoveredProjectIndex(null)}
               >
                 {/* Sleek outer glow border */}
                 <div 
@@ -417,6 +423,33 @@ function App() {
           </div>
         </div>
 
+        {/* Full-section Hover Details Overlay */}
+        <div className={`projects-hover-overlay-lux ${hoveredProjectIndex !== null ? 'visible' : ''}`}>
+          {hoveredProjectIndex !== null && (
+            <div className="hover-overlay-content">
+              <h3 style={{ color: projects[hoveredProjectIndex].color }}>
+                {projects[hoveredProjectIndex].title}
+              </h3>
+              <p className="hover-overlay-description">
+                {projects[hoveredProjectIndex].description}
+              </p>
+              <div className="hover-overlay-tech">
+                {projects[hoveredProjectIndex].tech.map((tag) => (
+                  <span 
+                    key={tag} 
+                    className="tech-badge-overlay" 
+                    style={{ 
+                      borderColor: projects[hoveredProjectIndex].color, 
+                      color: projects[hoveredProjectIndex].color 
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </section>
 
       {/* --- CONTACT SECTION --- */}

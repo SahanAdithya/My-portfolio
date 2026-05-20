@@ -1149,6 +1149,83 @@ body {
 
 
 
+/* --- FULL SECTION PROJECTS HOVER DETAILS OVERLAY --- */
+.projects-hover-overlay-lux {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(9, 11, 19, 0.9); /* Premium dark overlay color */
+  backdrop-filter: blur(25px); /* Gorgeous high blur premium glass */
+  -webkit-backdrop-filter: blur(25px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none; /* Clicking passes through to slider card underneath */
+  transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.projects-hover-overlay-lux.visible {
+  opacity: 1;
+}
+
+.hover-overlay-content {
+  max-width: 800px;
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  transform: translateY(30px);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.projects-hover-overlay-lux.visible .hover-overlay-content {
+  transform: translateY(0);
+}
+
+.hover-overlay-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.5px;
+}
+
+.hover-overlay-description {
+  color: #e2e8f0;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hover-overlay-tech {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.tech-badge-overlay {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid var(--accent-color);
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 /* --- CONTACT SECTION --- */
 .contact-section {
   background-color: var(--bg-primary);
