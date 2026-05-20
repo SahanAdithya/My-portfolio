@@ -417,24 +417,6 @@ function App() {
           </div>
         </div>
 
-        {/* Detailed Info Pane for the Active Project */}
-        <div className="active-project-details-lux">
-          <div className="project-detail-content">
-            <h3 style={{ color: activeProject.color }}>{activeProject.title}</h3>
-            <p className="project-detail-description">{activeProject.description}</p>
-            <div className="project-detail-tech">
-              {activeProject.tech.map((tag) => (
-                <span 
-                  key={tag} 
-                  className="tech-badge" 
-                  style={{ borderColor: activeProject.color, color: activeProject.color }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* --- CONTACT SECTION --- */}
