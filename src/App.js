@@ -374,7 +374,11 @@ function App() {
 
         <div 
           className="coverflow-container-lux"
-          onMouseLeave={() => setActiveProjectIndex(2)}
+          onMouseLeave={() => {
+            if (!isDetailOpen) {
+              setActiveProjectIndex(2);
+            }
+          }}
         >
           {/* Dynamic background glow matching the active project's color */}
           <div 
@@ -440,12 +444,18 @@ function App() {
         {/* Full-section Hover Details Overlay */}
         <div 
           className={`projects-hover-overlay-lux ${isDetailOpen ? 'visible' : ''}`}
-          onClick={() => setIsDetailOpen(false)}
+          onClick={() => {
+            setIsDetailOpen(false);
+            setActiveProjectIndex(2);
+          }}
         >
           {isDetailOpen && (
             <div className="hover-overlay-content-structured" onClick={(e) => e.stopPropagation()}>
               {/* Sleek Close Button directly inside the card */}
-              <div className="hover-overlay-close-btn" onClick={() => setIsDetailOpen(false)}>✕</div>
+              <div className="hover-overlay-close-btn" onClick={() => {
+                setIsDetailOpen(false);
+                setActiveProjectIndex(2);
+              }}>✕</div>
               
               {/* Left Column: Image Box */}
               <div className="overlay-image-column">
