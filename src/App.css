@@ -2104,3 +2104,111 @@ body {
     transform: translateY(0);
   }
 }
+
+/* --- MOBILE RESPONSIVE OVERRIDES --- */
+@media (max-width: 768px) {
+  /* Navbar adjustments */
+  .navbar {
+    padding: 12px 20px !important;
+  }
+  
+  .nav-signature {
+    height: 60px !important;
+    margin: 0 !important;
+  }
+  
+  .nav-links {
+    gap: 16px !important;
+  }
+  
+  .nav-links span {
+    font-size: 0.85rem !important;
+    letter-spacing: -0.2px;
+  }
+  
+  .nav-button {
+    display: none !important; /* Hide button on mobile to prevent squishing */
+  }
+
+  /* Hero Section adjustments */
+  .hero-footer-lux {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 25px !important;
+    margin-top: 40px !important;
+  }
+  
+  .hero-description-lux {
+    max-width: 100% !important;
+  }
+  
+  .hero-scroll-lux {
+    align-self: center !important;
+    margin-top: 10px;
+  }
+
+  /* About Me Section adjustments */
+  .about-container-lux {
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+  
+  .about-left-lux {
+    flex: none !important;
+    width: 100% !important;
+    opacity: 0 !important;
+    transform: translateY(30px) !important;
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  
+  .about-section-lux.is-visible .about-left-lux {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  .about-right-lux {
+    flex: none !important;
+    width: 100% !important;
+    padding-top: 0 !important;
+    opacity: 0 !important;
+    transform: translateY(30px) !important;
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition-delay: 0.15s !important;
+  }
+  
+  .about-section-lux.is-visible .about-right-lux {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  .about-title-lux {
+    font-size: 3.5rem !important;
+    margin-bottom: 25px !important;
+  }
+  
+  .about-quote-lux {
+    font-size: 1.8rem !important;
+    line-height: 1.45 !important;
+  }
+
+  /* Footer adjustments */
+  .footer-content-lux {
+    flex-direction: column !important;
+    gap: 50px !important;
+    margin-bottom: 50px !important;
+  }
+  
+  .footer-brand-col {
+    min-width: 100% !important;
+  }
+  
+  .footer-nav-grid-lux {
+    flex-direction: column !important;
+    gap: 35px !important;
+    min-width: 100% !important;
+  }
+  
+  .footer-nav-col {
+    gap: 15px !important;
+  }
+}
