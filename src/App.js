@@ -454,7 +454,7 @@ function App() {
             </div>
             <div className="contact-info-block">
               <h4>Office Time</h4>
-              <p>Monday - Sunday<br />11am - 7pm</p>
+              <p>Monday - Sunday<br />8am - 7pm</p>
             </div>
             <div className="contact-info-block">
               <h4>Support</h4>
