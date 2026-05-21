@@ -1340,6 +1340,251 @@ body {
   box-shadow: 0 8px 16px rgba(15, 23, 42, 0.15);
 }
 
+/* --- RESUME SECTION (Daham-Inspired Interactive Tabs) --- */
+.resume-section-lux {
+  background-color: var(--bg-secondary);
+  padding: 120px 8% 100px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.resume-section-lux::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./about-bg.webp');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  filter: blur(2px);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.resume-container-lux {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1300px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .resume-container-lux {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+}
+
+/* Left Column Styling */
+.resume-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.resume-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resume-subtitle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resume-subtitle-line {
+  width: 30px;
+  height: 1.5px;
+  background: #a09890;
+}
+
+.resume-subtitle-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #6b6560;
+  text-transform: uppercase;
+}
+
+.resume-main-title {
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1;
+  font-family: system-ui, -apple-system, sans-serif;
+  letter-spacing: -2px;
+}
+
+/* Dynamic Content Card (Flat and borderless) */
+.resume-details-flat {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.resume-details-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.resume-details-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px; /* Square-rounded badge in Screenshot 2 */
+  background: var(--text-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.resume-details-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.resume-details-desc {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.resume-details-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+.resume-tech-badge {
+  background: #ffffff;
+  border: 1.5px solid var(--border-color);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+/* Download/View Button (Circular arrow button) */
+.resume-download-btn {
+  align-self: flex-start;
+  background: var(--text-primary);
+  color: #ffffff;
+  padding: 12px 12px 12px 36px; /* Elegant offset padding for internal circle */
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+}
+
+.resume-download-btn:hover {
+  background: #2a2a2a;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.25);
+}
+
+.resume-btn-circle-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #222222; /* Dark grey inside circle */
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.resume-download-btn:hover .resume-btn-circle-arrow {
+  background: #444444;
+  transform: rotate(45deg); /* Subtle rotation animation on hover */
+}
+
+/* Right Column: Stats Column */
+.resume-stats-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.resume-stat-card {
+  background: var(--text-primary); /* Pure theme black background */
+  border-radius: 20px;
+  padding: 30px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* Align label to bottom-right */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.resume-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.resume-stat-number {
+  font-size: clamp(3.5rem, 5.5vw, 5.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  font-family: system-ui, -apple-system, sans-serif;
+  letter-spacing: -2px;
+  display: flex;
+  align-items: baseline;
+}
+
+.resume-stat-number .plus {
+  color: #ffffff; /* White plus sign for strict monochrome aesthetic */
+  margin-left: 2px;
+  font-weight: 700;
+}
+
+.resume-stat-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  font-size: 0.95rem;
+  color: #9ca3af; /* Elegant muted label text */
+  font-weight: 500;
+  line-height: 1.35;
+  margin-bottom: 5px; /* Offset alignment to perfectly match the design line */
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
 /* --- CONTACT SECTION (Klyro-Style) --- */
 .contact-section-new {
   background-color: var(--bg-secondary);

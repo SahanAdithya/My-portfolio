@@ -6,7 +6,8 @@ import {
   FaFacebookF, FaLinkedinIn, FaInstagram, FaGithub,
   FaDiscord,
   FaJava, FaPython, FaJs, FaDatabase, FaReact, FaGitAlt, FaEnvelope, FaPhone,
-  FaServer, FaNetworkWired, FaLaptopCode, FaHtml5, FaCss3Alt, FaFigma
+  FaServer, FaNetworkWired, FaLaptopCode, FaHtml5, FaCss3Alt, FaFigma,
+  FaBrain, FaCode, FaMicrochip
 } from 'react-icons/fa';
 import { SiNextdotjs, SiTailwindcss, SiRaspberrypi } from 'react-icons/si';
 
@@ -23,6 +24,9 @@ import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
 
+
+
+
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isLoading, setIsLoading] = useState(true);
@@ -31,6 +35,7 @@ function App() {
 
   const [activeProjectIndex, setActiveProjectIndex] = useState(2); // Folio is the middle card by default
   const [isDetailOpen, setIsDetailOpen] = useState(false);
+
 
   const projects = [
     {
@@ -426,6 +431,79 @@ function App() {
 
         </div>
 
+      </section>
+
+      {/* --- RESUME SECTION (Daham-Inspired Borderless Layout with Stats) --- */}
+      <section id="resume" className="resume-section-lux fade-in-section">
+        <div className="resume-container-lux">
+          {/* Left Column: Core Professional Profile */}
+          <div className="resume-content-col">
+            <div className="resume-title-block">
+              <h2 className="resume-main-title">Resume</h2>
+              <div className="resume-subtitle-row">
+                <span className="resume-subtitle-line"></span>
+                <span className="resume-subtitle-text">CORE EXPERTISE</span>
+              </div>
+            </div>
+
+            <div className="resume-details-flat">
+              <div className="resume-details-header">
+                <span className="resume-details-icon"><FaCode /></span>
+                <h3 className="resume-details-title">Full Stack Developer</h3>
+              </div>
+              <p className="resume-details-desc">
+                Building scalable, high-performance web applications with modern frameworks and smart IoT solutions. Bridging the physical and digital worlds using efficient firmware, custom PCBs, and intelligent neural networks.
+              </p>
+              <div className="resume-details-tech">
+                {["React", "Next.js", "Node.js", "TypeScript", "Python", "C++", "ESP32", "Arduino"].map((tag) => (
+                  <span key={tag} className="resume-tech-badge">{tag}</span>
+                ))}
+              </div>
+            </div>
+
+            <a 
+              href="/resume.pdf" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="resume-download-btn"
+            >
+              View Full Resume <span className="resume-btn-circle-arrow">↗</span>
+            </a>
+          </div>
+
+          {/* Right Column: Stats Grid Cards */}
+          <div className="resume-stats-col">
+            <div className="resume-stat-card">
+              <div className="resume-stat-number">
+                3<span className="plus">+</span>
+              </div>
+              <div className="resume-stat-label">
+                <span>Years</span>
+                <span>of experience</span>
+              </div>
+            </div>
+
+            <div className="resume-stat-card">
+              <div className="resume-stat-number">
+                30<span className="plus">+</span>
+              </div>
+              <div className="resume-stat-label">
+                <span>Projects</span>
+                <span>Delivered</span>
+              </div>
+            </div>
+
+            <div className="resume-stat-card">
+              <div className="resume-stat-number">
+                25<span className="plus">+</span>
+              </div>
+              <div className="resume-stat-label">
+                <span>Clients</span>
+                <span>Worldwide</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* --- CONTACT SECTION --- */}
