@@ -154,7 +154,7 @@ function App() {
       description: 'A comprehensive personal wealth and budget tracking dashboard featuring real-time expense visualization, monthly savings goal tracking, and automated financial health analytics.',
       image: financeTrackerImg,
       status: '(ACADEMIC WORK - COMPLETE)',
-      link: 'https://github.com/SahanAdithya'
+      link: 'https://finance-tracker-two-neon.vercel.app/'
     }
   ];
 
