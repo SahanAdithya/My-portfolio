@@ -354,7 +354,7 @@ function App() {
         <div className="hero-container-lux">
           <div className="hero-main-content">
             <h1 className="hero-title-lux">Sahan Adithya</h1>
-            <p className="hero-tagline-lux">Web Desighner & Developer.</p>
+            <p className="hero-tagline-lux">Web Designer & Developer.</p>
             <div className="hero-actions-lux">
               <button className="btn-primary-lux" onClick={() => scrollToSection('contact')}>Get In Touch</button>
               <button className="btn-secondary-lux" onClick={() => scrollToSection('projects')}>View Projects</button>
@@ -364,7 +364,7 @@ function App() {
           <div className="hero-footer-lux">
             <div className="hero-description-lux">
               <p>
-                Premium web desighn, development and SEO services to help your business stand out in the digital world.
+                Premium web design, development and SEO services to help your business stand out in the digital world.
               </p>
             </div>
             <div className="hero-scroll-lux">
