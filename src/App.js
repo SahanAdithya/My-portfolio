@@ -23,8 +23,30 @@ import electricityAnalystImg from './electricity-analyst.webp';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
+// --- COUNT UP ANIMATOR ---
+function CountUpNumber({ target, duration = 1500, startTrigger = false }) {
+  const [count, setCount] = useState(0);
 
+  useEffect(() => {
+    if (!startTrigger) {
+      setCount(0);
+      return;
+    }
+    
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      setCount(Math.floor(progress * target));
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }, [target, duration, startTrigger]);
 
+  return <>{count}</>;
+}
 
 
 function App() {
@@ -35,7 +57,7 @@ function App() {
 
   const [activeProjectIndex, setActiveProjectIndex] = useState(2); // Folio is the middle card by default
   const [isDetailOpen, setIsDetailOpen] = useState(false);
-
+  const [resumeInView, setResumeInView] = useState(false);
 
   const projects = [
     {
@@ -105,24 +127,24 @@ function App() {
   const getCardStyle = (index) => {
     const offset = index - activeProjectIndex;
     const absOffset = Math.abs(offset);
-    
+
     // Scale down cards as they get further from center
-    const scale = 1 - absOffset * 0.15; 
-    
+    const scale = 1 - absOffset * 0.15;
+
     // Translate X: active is 0, left is negative, right is positive
     let translateX = offset * 240; // base offset
     if (offset < 0) {
-      translateX += 40; 
+      translateX += 40;
     } else if (offset > 0) {
-      translateX -= 40; 
+      translateX -= 40;
     }
-    
+
     // Rotate Y
     const rotateY = offset * -25;
-    
+
     // Z-index
     const zIndex = 10 - absOffset;
-    
+
     // Opacity
     const opacity = absOffset > 2 ? 0 : (1 - absOffset * 0.25);
     const pointerEvents = absOffset > 2 ? 'none' : 'auto';
@@ -194,6 +216,22 @@ function App() {
     const hiddenElements = document.querySelectorAll('.fade-in-section');
     hiddenElements.forEach((el) => observer.observe(el));
 
+    // A2. IntersectionObserver specifically for triggering Resume statistics counters
+    const resumeSection = document.getElementById('resume');
+    const resumeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setResumeInView(true);
+        } else {
+          setResumeInView(false); // Reset to allow re-triggering animations on scroll re-entry
+        }
+      });
+    }, { threshold: 0.15 });
+
+    if (resumeSection) {
+      resumeObserver.observe(resumeSection);
+    }
+
     // B. Scroll Spy (Navbar Highlight)
     const handleScroll = () => {
       const sections = ['home', 'about', 'projects', 'contact'];
@@ -224,6 +262,9 @@ function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       hiddenElements.forEach((el) => observer.unobserve(el));
+      if (resumeSection) {
+        resumeObserver.unobserve(resumeSection);
+      }
     };
   }, []);
 
@@ -351,7 +392,7 @@ function App() {
             <div className="tech-item-lux"><SiNextdotjs /> NEXT.JS</div>
             <div className="tech-item-lux"><FaHtml5 /> HTML</div>
             <div className="tech-item-lux"><FaCss3Alt /> CSS</div>
-            
+
             {/* DUPLICATE FOR SEAMLESS LOOP */}
             <div className="tech-item-lux"><FaGitAlt /> GIT</div>
             <div className="tech-item-lux"><SiTailwindcss /> TAILWIND</div>
@@ -377,7 +418,7 @@ function App() {
           <p>Explore some of my most impactful projects and technical experiments.</p>
         </div>
 
-        <div 
+        <div
           className="coverflow-container-lux"
           onMouseLeave={() => {
             if (!isDetailOpen) {
@@ -385,10 +426,10 @@ function App() {
             }
           }}
         >
-          
+
           <div className="coverflow-slider-lux">
             {projects.map((project, index) => (
-              <div 
+              <div
                 key={project.id}
                 className={`project-card-coverflow ${index === activeProjectIndex ? 'active' : ''}`}
                 style={getCardStyle(index)}
@@ -404,7 +445,7 @@ function App() {
                 }}
               >
 
-                
+
                 {/* Glassy card body */}
                 <div className="card-inner-body">
 
@@ -433,7 +474,7 @@ function App() {
 
       </section>
 
-      {/* --- RESUME SECTION (Daham-Inspired Borderless Layout with Stats) --- */}
+      {/* --- RESUME SECTION (Daham-Inspired Borderless Layout with Animated Stats) --- */}
       <section id="resume" className="resume-section-lux fade-in-section">
         <div className="resume-container-lux">
           {/* Left Column: Core Professional Profile */}
@@ -475,7 +516,7 @@ function App() {
           <div className="resume-stats-col">
             <div className="resume-stat-card">
               <div className="resume-stat-number">
-                3<span className="plus">+</span>
+                <CountUpNumber target={3} startTrigger={resumeInView} /><span className="plus">+</span>
               </div>
               <div className="resume-stat-label">
                 <span>Years</span>
@@ -485,7 +526,7 @@ function App() {
 
             <div className="resume-stat-card">
               <div className="resume-stat-number">
-                30<span className="plus">+</span>
+                <CountUpNumber target={30} startTrigger={resumeInView} /><span className="plus">+</span>
               </div>
               <div className="resume-stat-label">
                 <span>Projects</span>
@@ -495,7 +536,7 @@ function App() {
 
             <div className="resume-stat-card">
               <div className="resume-stat-number">
-                25<span className="plus">+</span>
+                <CountUpNumber target={25} startTrigger={resumeInView} /><span className="plus">+</span>
               </div>
               <div className="resume-stat-label">
                 <span>Clients</span>
@@ -613,7 +654,7 @@ function App() {
       </footer>
 
       {/* Full-section Hover Details Overlay - Positioned outside all container clipping layers */}
-      <div 
+      <div
         className={`projects-hover-overlay-lux ${isDetailOpen ? 'visible' : ''}`}
         onClick={() => {
           setIsDetailOpen(false);
@@ -627,7 +668,7 @@ function App() {
               setIsDetailOpen(false);
               setActiveProjectIndex(2);
             }}>✕</div>
-            
+
             {/* Left Column: Image Box */}
             <div className="overlay-image-column">
               {activeProject.image ? (
@@ -644,15 +685,15 @@ function App() {
               <div className="details-header-tag">About the project</div>
               <div className="details-project-status">{activeProject.status}</div>
               <h2 className="details-project-title">{activeProject.title}</h2>
-              
+
               <p className="details-project-description">
                 {activeProject.description}
               </p>
 
-              <a 
-                href={activeProject.link || '#'} 
-                target="_blank" 
-                rel="noreferrer" 
+              <a
+                href={activeProject.link || '#'}
+                target="_blank"
+                rel="noreferrer"
                 className="details-view-more"
               >
                 View More <span className="arrow">↗</span>

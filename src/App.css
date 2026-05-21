@@ -1418,12 +1418,12 @@ body {
 
 .resume-main-title {
   font-size: clamp(3.5rem, 6vw, 5.5rem);
-  font-weight: 800;
+  font-weight: 900;
   color: var(--text-primary);
   margin: 0;
   line-height: 1;
-  font-family: system-ui, -apple-system, sans-serif;
-  letter-spacing: -2px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: normal;
 }
 
 /* Dynamic Content Card (Flat and borderless) */
