@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 // --- 1. ICONS IMPORTS ---
@@ -56,6 +56,8 @@ function App() {
   const [activeProjectIndex, setActiveProjectIndex] = useState(2); // Folio is the middle card by default
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [resumeInView, setResumeInView] = useState(false);
+
+  const hoverTimeoutRef = useRef(null);
 
   // Responsive window tracking
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -497,6 +499,9 @@ function App() {
         <div
           className="coverflow-container-lux"
           onMouseLeave={() => {
+            if (hoverTimeoutRef.current) {
+              clearTimeout(hoverTimeoutRef.current);
+            }
             if (!isDetailOpen) {
               setActiveProjectIndex(2);
             }
@@ -521,7 +526,17 @@ function App() {
                 }}
                 onMouseEnter={() => {
                   if (windowWidth > 768) {
-                    setActiveProjectIndex(index);
+                    if (hoverTimeoutRef.current) {
+                      clearTimeout(hoverTimeoutRef.current);
+                    }
+                    hoverTimeoutRef.current = setTimeout(() => {
+                      setActiveProjectIndex(index);
+                    }, 120);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (hoverTimeoutRef.current) {
+                    clearTimeout(hoverTimeoutRef.current);
                   }
                 }}
               >
