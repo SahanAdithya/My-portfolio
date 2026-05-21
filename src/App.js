@@ -3,11 +3,10 @@ import './App.css';
 
 // --- 1. ICONS IMPORTS ---
 import {
-  FaFacebookF, FaLinkedinIn, FaInstagram, FaGithub,
-  FaDiscord,
-  FaJava, FaPython, FaJs, FaDatabase, FaReact, FaGitAlt, FaEnvelope, FaPhone,
-  FaServer, FaNetworkWired, FaLaptopCode, FaHtml5, FaCss3Alt, FaFigma,
-  FaBrain, FaCode, FaMicrochip
+  FaLinkedinIn, FaInstagram, FaGithub,
+  FaJava, FaPython, FaJs, FaReact, FaGitAlt,
+  FaServer, FaLaptopCode, FaHtml5, FaCss3Alt, FaFigma,
+  FaCode
 } from 'react-icons/fa';
 import { SiNextdotjs, SiTailwindcss, SiRaspberrypi } from 'react-icons/si';
 
@@ -17,7 +16,6 @@ import sahanLogoNavy from './sahan-logo-navy.webp';
 import { FaXTwitter } from 'react-icons/fa6';
 
 // --- 3. IMAGE IMPORTS ---
-import heroBg from './hero-bg.webp';
 import adorixImg from './adorix.webp';
 import electricityAnalystImg from './electricity-analyst.webp';
 import Lenis from 'lenis';
