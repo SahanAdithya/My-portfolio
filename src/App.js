@@ -32,7 +32,7 @@ function CountUpNumber({ target, duration = 1500, startTrigger = false }) {
       setCount(0);
       return;
     }
-    
+
     let startTimestamp = null;
     const step = (timestamp) => {
       if (!startTimestamp) startTimestamp = timestamp;
@@ -496,16 +496,16 @@ function App() {
                 Building scalable, high-performance web applications with modern frameworks and smart IoT solutions. Bridging the physical and digital worlds using efficient firmware, custom PCBs, and intelligent neural networks.
               </p>
               <div className="resume-details-tech">
-                {["React", "Next.js", "Node.js", "TypeScript", "Python", "C++", "ESP32", "Arduino"].map((tag) => (
+                {["React", "Next.js", "Node.js", "TypeScript", "Python", "C++"].map((tag) => (
                   <span key={tag} className="resume-tech-badge">{tag}</span>
                 ))}
               </div>
             </div>
 
-            <a 
-              href="/resume.pdf" 
-              target="_blank" 
-              rel="noreferrer" 
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
               className="resume-download-btn"
             >
               View Full Resume <span className="resume-btn-circle-arrow">↗</span>
@@ -620,36 +620,65 @@ function App() {
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="footer-section">
-        <div className="footer-content">
-          <div className="footer-col">
-            <h3>Quick Links</h3>
-            <ul>
-              <li onClick={() => scrollToSection('home')}>Home</li>
-              <li onClick={() => scrollToSection('about')}>About</li>
-              <li onClick={() => scrollToSection('resume')}>Resume</li>
-              <li onClick={() => scrollToSection('projects')}>Projects</li>
-              <li onClick={() => scrollToSection('contact')}>Contact</li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h3>Contact Info</h3>
-            <p><FaEnvelope style={iconStyle} /> adithyasahan09@gmail.com</p>
-            <p><FaPhone style={iconStyle} /> +94 71 679 0508</p>
-          </div>
-          <div className="footer-col">
-            <h3>Follow Me</h3>
-            <div className="footer-socials">
+      <footer className="footer-section-lux">
+        <div className="footer-content-lux">
+          {/* Left Column: Brand info */}
+          <div className="footer-brand-col">
+            <div className="footer-brand-header">
+              <span className="footer-brand-text">Sahan Adithya</span>
+            </div>
+            <p className="footer-tagline">
+              Crafting premium digital experiences, full stack systems, and intelligent IoT solutions with absolute precision.
+            </p>
+            <div className="footer-socials-square">
+              <a href="https://www.instagram.com/__.sahan.adithya.__/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+              <a href="https://www.facebook.com/sahan.adithya.311" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
               <a href="https://www.linkedin.com/in/sahan-adithya-32a941359/" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
               <a href="https://github.com/SahanAdithya" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-              <a href="https://www.facebook.com/sahan.adithya.311" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
-              <a href="https://www.instagram.com/__.sahan.adithya.__/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
               <a href="https://x.com/sahan_adithya09" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
             </div>
           </div>
+
+          {/* Right Columns: Nav Grid */}
+          <div className="footer-nav-grid-lux">
+            <div className="footer-nav-col">
+              <h3>Quick Links</h3>
+              <ul>
+                <li onClick={() => scrollToSection('home')}>Home</li>
+                <li onClick={() => scrollToSection('about')}>About</li>
+                <li onClick={() => scrollToSection('projects')}>Projects</li>
+                <li onClick={() => scrollToSection('resume')}>Resume</li>
+                <li onClick={() => scrollToSection('contact')}>Contact</li>
+              </ul>
+            </div>
+
+            <div className="footer-nav-col">
+              <h3>Contact Info</h3>
+              <ul>
+                <li className="footer-contact-item">adithyasahan09@gmail.com</li>
+                <li className="footer-contact-item">+94 71 679 0508</li>
+                <li className="footer-contact-item">149/25, Amandoluwa Seeduwa.</li>
+              </ul>
+            </div>
+
+            <div className="footer-nav-col">
+              <h3>Services</h3>
+              <ul>
+                <li>Full Stack Web</li>
+                <li>Machine Learning</li>
+                <li>Embedded Systems</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className="footer-bottom">
-          <p>© 2026 Sahan Adithya. All Rights Reserved.</p>
+
+        {/* Oversized cropped background watermark watermark text */}
+        <div className="footer-giant-bg-text">
+          Sahan
+        </div>
+
+        <div className="footer-bottom-lux">
+          <span className="copyright-lux">© 2026 Sahan Adithya. All Rights Reserved.</span>
         </div>
       </footer>
 
