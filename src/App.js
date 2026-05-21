@@ -3,17 +3,16 @@ import './App.css';
 
 // --- 1. ICONS IMPORTS ---
 import {
-  FaLinkedinIn, FaInstagram, FaGithub,
   FaJava, FaPython, FaJs, FaReact, FaGitAlt,
   FaServer, FaLaptopCode, FaHtml5, FaCss3Alt, FaFigma,
   FaCode
 } from 'react-icons/fa';
 import { SiNextdotjs, SiTailwindcss, SiRaspberrypi } from 'react-icons/si';
+import { FiGithub, FiLinkedin, FiInstagram, FiMail } from 'react-icons/fi';
 
 
 import sahanLogo from './sahan-logo.webp';
 import sahanLogoNavy from './sahan-logo-navy.webp';
-import { FaXTwitter } from 'react-icons/fa6';
 
 // --- 3. IMAGE IMPORTS ---
 import adorixImg from './adorix.webp';
@@ -720,10 +719,10 @@ function App() {
               Crafting premium digital experiences, full stack systems, and intelligent IoT solutions with absolute precision.
             </p>
             <div className="footer-socials-square">
-              <a href="https://www.instagram.com/__.sahan.adithya.__/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-              <a href="https://www.linkedin.com/in/sahan-adithya-32a941359/" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
-              <a href="https://github.com/SahanAdithya" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-              <a href="https://x.com/sahan_adithya09" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
+              <a href="https://github.com/SahanAdithya" target="_blank" rel="noopener noreferrer"><FiGithub /></a>
+              <a href="https://www.linkedin.com/in/sahan-adithya-32a941359/" target="_blank" rel="noopener noreferrer"><FiLinkedin /></a>
+              <a href="https://www.instagram.com/__.sahan.adithya.__/" target="_blank" rel="noopener noreferrer"><FiInstagram /></a>
+              <a href="mailto:adithyasahan09@gmail.com"><FiMail /></a>
             </div>
           </div>
 
