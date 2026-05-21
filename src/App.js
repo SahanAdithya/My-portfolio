@@ -380,11 +380,6 @@ function App() {
             }
           }}
         >
-          {/* Dynamic background glow matching the active project's color */}
-          <div 
-            className="coverflow-bg-glow" 
-            style={{ '--active-color': activeProject.color }}
-          ></div>
           
           <div className="coverflow-slider-lux">
             {projects.map((project, index) => (
@@ -428,17 +423,7 @@ function App() {
             ))}
           </div>
 
-          {/* Pagination Indicators */}
-          <div className="coverflow-pagination">
-            {projects.map((_, index) => (
-              <span 
-                key={index} 
-                className={`pagination-dot ${index === activeProjectIndex ? 'active' : ''}`}
-                style={{ '--active-color': activeProject.color }}
-                onClick={() => setActiveProjectIndex(index)}
-              ></span>
-            ))}
-          </div>
+
         </div>
 
         {/* Full-section Hover Details Overlay */}
