@@ -426,67 +426,6 @@ function App() {
 
         </div>
 
-        {/* Full-section Hover Details Overlay */}
-        <div 
-          className={`projects-hover-overlay-lux ${isDetailOpen ? 'visible' : ''}`}
-          onClick={() => {
-            setIsDetailOpen(false);
-            setActiveProjectIndex(2);
-          }}
-        >
-          {isDetailOpen && (
-            <div className="hover-overlay-content-structured" onClick={(e) => e.stopPropagation()}>
-              {/* Sleek Close Button directly inside the card */}
-              <div className="hover-overlay-close-btn" onClick={() => {
-                setIsDetailOpen(false);
-                setActiveProjectIndex(2);
-              }}>✕</div>
-              
-              {/* Left Column: Image Box */}
-              <div className="overlay-image-column">
-                {activeProject.image ? (
-                  <img src={activeProject.image} alt={activeProject.title} className="overlay-project-img" />
-                ) : (
-                  <div className="overlay-image-placeholder" style={{ '--accent-color': activeProject.color }}>
-                    <span style={{ color: activeProject.color }}>{activeProject.title}</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Right Column: Structured Details */}
-              <div className="overlay-details-column">
-                <div className="details-header-tag">About the project</div>
-                <div className="details-project-status">{activeProject.status}</div>
-                <h2 className="details-project-title">{activeProject.title}</h2>
-                
-                <p className="details-project-description">
-                  {activeProject.description}
-                </p>
-
-                <a 
-                  href={activeProject.link || '#'} 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="details-view-more"
-                >
-                  View More <span className="arrow">↗</span>
-                </a>
-
-                <div className="details-tech-section">
-                  <div className="tech-section-title">TECHNOLOGIES</div>
-                  <div className="details-tech-grid">
-                    {activeProject.tech.map((tag) => (
-                      <span key={tag} className="tech-badge-structured">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          )}
-        </div>
       </section>
 
       {/* --- CONTACT SECTION --- */}
@@ -511,7 +450,7 @@ function App() {
           <div className="contact-info-col">
             <div className="contact-info-block">
               <h4>Office Location</h4>
-              <p>12273 Dream Avenue, London,<br />123456 United Kingdom</p>
+              <p>149/25,<br />Amandoluwa Seeduwa.</p>
             </div>
             <div className="contact-info-block">
               <h4>Office Time</h4>
@@ -594,6 +533,68 @@ function App() {
           <p>© 2026 Sahan Adithya. All Rights Reserved.</p>
         </div>
       </footer>
+
+      {/* Full-section Hover Details Overlay - Positioned outside all container clipping layers */}
+      <div 
+        className={`projects-hover-overlay-lux ${isDetailOpen ? 'visible' : ''}`}
+        onClick={() => {
+          setIsDetailOpen(false);
+          setActiveProjectIndex(2);
+        }}
+      >
+        {isDetailOpen && (
+          <div className="hover-overlay-content-structured" onClick={(e) => e.stopPropagation()}>
+            {/* Sleek Close Button directly inside the card */}
+            <div className="hover-overlay-close-btn" onClick={() => {
+              setIsDetailOpen(false);
+              setActiveProjectIndex(2);
+            }}>✕</div>
+            
+            {/* Left Column: Image Box */}
+            <div className="overlay-image-column">
+              {activeProject.image ? (
+                <img src={activeProject.image} alt={activeProject.title} className="overlay-project-img" />
+              ) : (
+                <div className="overlay-image-placeholder" style={{ '--accent-color': activeProject.color }}>
+                  <span style={{ color: activeProject.color }}>{activeProject.title}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Right Column: Structured Details */}
+            <div className="overlay-details-column">
+              <div className="details-header-tag">About the project</div>
+              <div className="details-project-status">{activeProject.status}</div>
+              <h2 className="details-project-title">{activeProject.title}</h2>
+              
+              <p className="details-project-description">
+                {activeProject.description}
+              </p>
+
+              <a 
+                href={activeProject.link || '#'} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="details-view-more"
+              >
+                View More <span className="arrow">↗</span>
+              </a>
+
+              <div className="details-tech-section">
+                <div className="tech-section-title">TECHNOLOGIES</div>
+                <div className="details-tech-grid">
+                  {activeProject.tech.map((tag) => (
+                    <span key={tag} className="tech-badge-structured">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        )}
+      </div>
 
     </div>
   );

@@ -919,6 +919,8 @@ body {
   z-index: 1;
 }
 
+
+
 .projects-section-lux::before {
   content: '';
   position: absolute;
@@ -1121,7 +1123,7 @@ body {
   background: rgba(15, 23, 42, 0.4); /* Semi-transparent backdrop shadow */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  z-index: 2000; /* Float high above everything */
+  z-index: 99999; /* Float high above everything */
   display: flex;
   align-items: center;
   justify-content: center;
