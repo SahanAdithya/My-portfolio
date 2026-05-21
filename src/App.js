@@ -59,6 +59,44 @@ function App() {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [resumeInView, setResumeInView] = useState(false);
 
+  // --- CONTACT FORM STATE ---
+  const [formState, setFormState] = useState({ name: '', email: '', company: '', website: '', service: '', description: '' });
+  const [submitStatus, setSubmitStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitStatus('submitting');
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/adithyasahan09@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          Name: formState.name,
+          Email: formState.email,
+          Company: formState.company,
+          Website: formState.website,
+          Service: formState.service,
+          Message: formState.description,
+          _subject: `New Portfolio Message from ${formState.name}`
+        })
+      });
+
+      await response.json();
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormState({ name: '', email: '', company: '', website: '', service: '', description: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    }
+  };
+
   const projects = [
     {
       id: 'read-later',
@@ -583,38 +621,91 @@ function App() {
 
           {/* Right: Form Column */}
           <div className="contact-form-col">
-            <form className="contact-form-new">
-              <div className="form-row-pair">
-                <div className="form-field-new">
-                  <input type="text" placeholder="Enter your name" required />
-                </div>
-                <div className="form-field-new">
-                  <input type="email" placeholder="Email address" required />
-                </div>
+            {submitStatus === 'success' ? (
+              <div className="contact-success-card">
+                <div className="success-icon">✓</div>
+                <h3>Message Sent!</h3>
+                <p>Thank you for reaching out. Sahan has received your project details and will reply within 24 hours.</p>
+                <p className="success-subtext">A verification/submission alert will arrive in your inbox shortly.</p>
+                <button 
+                  onClick={() => setSubmitStatus('idle')} 
+                  className="contact-submit-btn"
+                  style={{ marginTop: '20px', width: 'auto', padding: '12px 30px' }}
+                >
+                  Send Another Message
+                </button>
               </div>
-              <div className="form-row-pair">
-                <div className="form-field-new">
-                  <input type="text" placeholder="Company name" />
+            ) : (
+              <form onSubmit={handleFormSubmit} className="contact-form-new">
+                <div className="form-row-pair">
+                  <div className="form-field-new">
+                    <input 
+                      type="text" 
+                      placeholder="Enter your name" 
+                      required 
+                      value={formState.name}
+                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                    />
+                  </div>
+                  <div className="form-field-new">
+                    <input 
+                      type="email" 
+                      placeholder="Email address" 
+                      required 
+                      value={formState.email}
+                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    />
+                  </div>
                 </div>
-                <div className="form-field-new">
-                  <input type="url" placeholder="www.example.com" />
+                <div className="form-row-pair">
+                  <div className="form-field-new">
+                    <input 
+                      type="text" 
+                      placeholder="Company name" 
+                      value={formState.company}
+                      onChange={(e) => setFormState({ ...formState, company: e.target.value })}
+                    />
+                  </div>
+                  <div className="form-field-new">
+                    <input 
+                      type="url" 
+                      placeholder="www.example.com" 
+                      value={formState.website}
+                      onChange={(e) => setFormState({ ...formState, website: e.target.value })}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="form-field-new full-width">
-                <select required defaultValue="">
-                  <option value="" disabled>Select your services</option>
-                  <option value="web-design">Web Design</option>
-                  <option value="web-dev">Web Development</option>
-                  <option value="mobile-app">Mobile App</option>
-                  <option value="branding">Branding</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div className="form-field-new full-width">
-                <textarea rows="3" placeholder="Project description" required></textarea>
-              </div>
-              <button type="submit" className="contact-submit-btn">Send Message →</button>
-            </form>
+                <div className="form-field-new full-width">
+                  <select 
+                    required 
+                    value={formState.service}
+                    onChange={(e) => setFormState({ ...formState, service: e.target.value })}
+                  >
+                    <option value="" disabled>Select your services</option>
+                    <option value="Web Design">Web Design</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Mobile App">Mobile App</option>
+                    <option value="Branding">Branding</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div className="form-field-new full-width">
+                  <textarea 
+                    rows="3" 
+                    placeholder="Project description" 
+                    required 
+                    value={formState.description}
+                    onChange={(e) => setFormState({ ...formState, description: e.target.value })}
+                  ></textarea>
+                </div>
+                {submitStatus === 'error' && (
+                  <p className="contact-error-text">❌ Failed to send message. Please try again.</p>
+                )}
+                <button type="submit" className="contact-submit-btn" disabled={submitStatus === 'submitting'}>
+                  {submitStatus === 'submitting' ? 'Sending...' : 'Send Message →'}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </section>
@@ -632,7 +723,6 @@ function App() {
             </p>
             <div className="footer-socials-square">
               <a href="https://www.instagram.com/__.sahan.adithya.__/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-              <a href="https://www.facebook.com/sahan.adithya.311" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
               <a href="https://www.linkedin.com/in/sahan-adithya-32a941359/" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
               <a href="https://github.com/SahanAdithya" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
               <a href="https://x.com/sahan_adithya09" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>

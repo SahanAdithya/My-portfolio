@@ -2018,3 +2018,74 @@ body {
     opacity: 1;
   }
 }
+
+/* --- CONTACT SUCCESS & ERROR STATES --- */
+.contact-success-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+  background-color: #0b0b0b;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  min-height: 380px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.success-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  color: #0b0b0b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.contact-success-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.contact-success-card p {
+  font-size: 1rem;
+  color: #888888;
+  max-width: 320px;
+  line-height: 1.6;
+  margin: 0 auto 10px;
+}
+
+.contact-success-card .success-subtext {
+  font-size: 0.85rem;
+  color: #555555;
+  margin-top: 8px;
+}
+
+.contact-error-text {
+  color: #ff3b30;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  font-weight: 500;
+  text-align: left;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
