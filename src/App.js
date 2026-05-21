@@ -17,6 +17,7 @@ import sahanLogoNavy from './sahan-logo-navy.webp';
 // --- 3. IMAGE IMPORTS ---
 import adorixImg from './adorix.webp';
 import electricityAnalystImg from './electricity-analyst.webp';
+import financeTrackerImg from './finance-tracker.webp';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
@@ -128,8 +129,8 @@ function App() {
       tech: ['React', 'Python', 'OpenCV', 'FastAPI', 'TensorFlow'],
       description: 'Adorix transforms static screens into intelligent agents. Track motion, interact with voice, and serve personalized content in real-time.',
       image: adorixImg,
-      status: '(2ND YEAR PROJECT - ONGOING)',
-      link: 'https://github.com/SahanAdithya'
+      status: '(2ND YEAR PROJECT - COMPLETE)',
+      link: 'https://www.adorixit.com/'
     },
     {
       id: 'electricity-analyst',
@@ -141,18 +142,18 @@ function App() {
       description: 'An intelligent electricity analysis platform designed to track power usage, analyze energy efficiency, and provide personalized insights for optimizing electricity consumption.',
       image: electricityAnalystImg,
       status: '(ACADEMIC WORK - COMPLETE)',
-      link: 'https://github.com/SahanAdithya'
+      link: 'https://electricity-analysis-2zyk.vercel.app/'
     },
     {
-      id: 'tweaks',
-      title: 'Tweaks Panel',
-      subtitle: 'Dynamic Theme Dashboard',
-      largeText: 'TWEAKS',
-      color: '#b026ff',
-      tech: ['React', 'Local Storage', 'CSS Variables'],
-      description: 'A lightweight settings panel enabling developers to live-tweak layouts, toggle theme variables, and visualize UI components in real-time.',
-      image: '',
-      status: '(TECHNICAL TOOL - COMPLETE)',
+      id: 'finance-tracker',
+      title: 'Finance Tracker',
+      subtitle: 'Personal Wealth Dashboard',
+      largeText: 'FINANCE',
+      color: '#00e676',
+      tech: ['React', 'Chart.js', 'Node.js', 'Express', 'MongoDB'],
+      description: 'A comprehensive personal wealth and budget tracking dashboard featuring real-time expense visualization, monthly savings goal tracking, and automated financial health analytics.',
+      image: financeTrackerImg,
+      status: '(ACADEMIC WORK - COMPLETE)',
       link: 'https://github.com/SahanAdithya'
     }
   ];
@@ -624,8 +625,8 @@ function App() {
                 <h3>Message Sent!</h3>
                 <p>Thank you for reaching out. Sahan has received your project details and will reply within 24 hours.</p>
                 <p className="success-subtext">A verification/submission alert will arrive in your inbox shortly.</p>
-                <button 
-                  onClick={() => setSubmitStatus('idle')} 
+                <button
+                  onClick={() => setSubmitStatus('idle')}
                   className="contact-submit-btn"
                   style={{ marginTop: '20px', width: 'auto', padding: '12px 30px' }}
                 >
@@ -636,19 +637,19 @@ function App() {
               <form onSubmit={handleFormSubmit} className="contact-form-new">
                 <div className="form-row-pair">
                   <div className="form-field-new">
-                    <input 
-                      type="text" 
-                      placeholder="Enter your name" 
-                      required 
+                    <input
+                      type="text"
+                      placeholder="Enter your name"
+                      required
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                     />
                   </div>
                   <div className="form-field-new">
-                    <input 
-                      type="email" 
-                      placeholder="Email address" 
-                      required 
+                    <input
+                      type="email"
+                      placeholder="Email address"
+                      required
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                     />
@@ -656,25 +657,25 @@ function App() {
                 </div>
                 <div className="form-row-pair">
                   <div className="form-field-new">
-                    <input 
-                      type="text" 
-                      placeholder="Company name" 
+                    <input
+                      type="text"
+                      placeholder="Company name"
                       value={formState.company}
                       onChange={(e) => setFormState({ ...formState, company: e.target.value })}
                     />
                   </div>
                   <div className="form-field-new">
-                    <input 
-                      type="url" 
-                      placeholder="www.example.com" 
+                    <input
+                      type="url"
+                      placeholder="www.example.com"
                       value={formState.website}
                       onChange={(e) => setFormState({ ...formState, website: e.target.value })}
                     />
                   </div>
                 </div>
                 <div className="form-field-new full-width">
-                  <select 
-                    required 
+                  <select
+                    required
                     value={formState.service}
                     onChange={(e) => setFormState({ ...formState, service: e.target.value })}
                   >
@@ -687,10 +688,10 @@ function App() {
                   </select>
                 </div>
                 <div className="form-field-new full-width">
-                  <textarea 
-                    rows="3" 
-                    placeholder="Project description" 
-                    required 
+                  <textarea
+                    rows="3"
+                    placeholder="Project description"
+                    required
                     value={formState.description}
                     onChange={(e) => setFormState({ ...formState, description: e.target.value })}
                   ></textarea>
