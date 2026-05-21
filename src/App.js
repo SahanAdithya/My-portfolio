@@ -59,6 +59,89 @@ function App() {
 
   const hoverTimeoutRef = useRef(null);
 
+  // --- CUSTOM CURSOR REFS & PERFORMANCE ANIMATION ---
+  const cursorRef = useRef(null);
+  const cursorOutlineRef = useRef(null);
+
+  useEffect(() => {
+    // Check if the device has hover capability (desktops with fine pointers)
+    const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!hasHover) return;
+
+    const cursor = cursorRef.current;
+    const cursorOutline = cursorOutlineRef.current;
+    if (!cursor) return;
+
+    let mouseX = -100;
+    let mouseY = -100;
+    let outlineX = -100;
+    let outlineY = -100;
+
+    const onMouseMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      cursor.style.opacity = '1';
+      if (cursorOutline) cursorOutline.style.opacity = '1';
+      
+      cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+      
+      // Determine if cursor is hovering over an interactive element
+      const target = e.target;
+      if (target) {
+        const isClickable = 
+          target.closest('a') || 
+          target.closest('button') || 
+          target.closest('input') || 
+          target.closest('select') || 
+          target.closest('textarea') || 
+          target.closest('[role="button"]') ||
+          target.closest('.pov-tab') ||
+          target.closest('.project-card-coverflow') ||
+          target.closest('.details-view-more') ||
+          target.closest('.footer-socials-square a') ||
+          target.closest('.nav-links span') ||
+          window.getComputedStyle(target).cursor === 'pointer';
+
+        if (isClickable) {
+          cursor.classList.add('hovered');
+          if (cursorOutline) cursorOutline.classList.add('hovered');
+        } else {
+          cursor.classList.remove('hovered');
+          if (cursorOutline) cursorOutline.classList.remove('hovered');
+        }
+      }
+    };
+
+    const onMouseLeaveWindow = () => {
+      cursor.style.opacity = '0';
+      if (cursorOutline) cursorOutline.style.opacity = '0';
+    };
+
+    let animationFrameId;
+    const animateOutline = () => {
+      const ease = 0.12; // Beautiful slow drag ease
+      outlineX += (mouseX - outlineX) * ease;
+      outlineY += (mouseY - outlineY) * ease;
+
+      if (cursorOutline) {
+        cursorOutline.style.transform = `translate3d(${outlineX}px, ${outlineY}px, 0) translate(-50%, -50%)`;
+      }
+
+      animationFrameId = requestAnimationFrame(animateOutline);
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseleave', onMouseLeaveWindow);
+    animationFrameId = requestAnimationFrame(animateOutline);
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseleave', onMouseLeaveWindow);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
   // Responsive window tracking
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -370,6 +453,10 @@ function App() {
 
   return (
     <div className="App">
+
+      {/* --- CUSTOM MOUSE CURSOR --- */}
+      <div className="custom-cursor-dot" ref={cursorRef}></div>
+      <div className="custom-cursor-outline" ref={cursorOutlineRef}></div>
 
       {/* --- PRELOADER --- */}
       {isLoading && (
