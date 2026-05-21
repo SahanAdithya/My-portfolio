@@ -550,17 +550,6 @@ function App() {
             ))}
           </div>
 
-          <div className="coverflow-pagination">
-            {projects.map((project, index) => (
-              <div
-                key={`dot-${project.id}`}
-                className={`pagination-dot ${index === activeProjectIndex ? 'active' : ''}`}
-                style={{ '--active-color': project.color }}
-                onClick={() => setActiveProjectIndex(index)}
-              />
-            ))}
-          </div>
-
         </div>
 
       </section>
