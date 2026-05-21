@@ -57,6 +57,41 @@ function App() {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [resumeInView, setResumeInView] = useState(false);
 
+  // Responsive window tracking
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Mobile touch swipe handling for coverflow carousel
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && activeProjectIndex < projects.length - 1) {
+      setActiveProjectIndex((prev) => prev + 1);
+    }
+    if (isRightSwipe && activeProjectIndex > 0) {
+      setActiveProjectIndex((prev) => prev - 1);
+    }
+  };
+
   // --- CONTACT FORM STATE ---
   const [formState, setFormState] = useState({ name: '', email: '', company: '', website: '', service: '', description: '' });
   const [submitStatus, setSubmitStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
@@ -167,12 +202,17 @@ function App() {
     // Scale down cards as they get further from center
     const scale = 1 - absOffset * 0.15;
 
+    // Responsive offsets for desktop vs mobile
+    const isMobile = windowWidth <= 768;
+    const baseTranslate = isMobile ? 100 : 240;
+    const adjustTranslate = isMobile ? 15 : 40;
+
     // Translate X: active is 0, left is negative, right is positive
-    let translateX = offset * 240; // base offset
+    let translateX = offset * baseTranslate; // base offset
     if (offset < 0) {
-      translateX += 40;
+      translateX += adjustTranslate;
     } else if (offset > 0) {
-      translateX -= 40;
+      translateX -= adjustTranslate;
     }
 
     // Rotate Y
@@ -461,6 +501,9 @@ function App() {
               setActiveProjectIndex(2);
             }
           }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
 
           <div className="coverflow-slider-lux">
@@ -477,7 +520,9 @@ function App() {
                   }
                 }}
                 onMouseEnter={() => {
-                  setActiveProjectIndex(index);
+                  if (windowWidth > 768) {
+                    setActiveProjectIndex(index);
+                  }
                 }}
               >
 
@@ -505,6 +550,16 @@ function App() {
             ))}
           </div>
 
+          <div className="coverflow-pagination">
+            {projects.map((project, index) => (
+              <div
+                key={`dot-${project.id}`}
+                className={`pagination-dot ${index === activeProjectIndex ? 'active' : ''}`}
+                style={{ '--active-color': project.color }}
+                onClick={() => setActiveProjectIndex(index)}
+              />
+            ))}
+          </div>
 
         </div>
 

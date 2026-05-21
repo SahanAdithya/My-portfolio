@@ -1107,6 +1107,31 @@ body {
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
+@media (max-width: 768px) {
+  .coverflow-container-lux {
+    height: 480px;
+    padding-top: 10px;
+  }
+  .coverflow-slider-lux {
+    height: 380px;
+  }
+  .project-card-coverflow {
+    width: 250px;
+    height: 360px;
+    border-radius: 16px;
+  }
+  .card-inner-body {
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .card-project-title {
+    font-size: 1.4rem;
+  }
+  .card-project-subtitle {
+    font-size: 0.8rem;
+  }
+}
+
 /* Pagination indicator dots */
 .coverflow-pagination {
   display: flex;
