@@ -364,7 +364,7 @@ function App() {
           <div className="hero-footer-lux">
             <div className="hero-description-lux">
               <p>
-                Premium web desighn, development and SEO services to help your business stand out in the digital world.
+                Premium web design, development and SEO services to help your business stand out in the digital world.
               </p>
             </div>
             <div className="hero-scroll-lux">
