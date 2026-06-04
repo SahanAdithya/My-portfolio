@@ -149,7 +149,7 @@ function App() {
     {
       id: 'cohort',
       title: 'CollabHub',
-      subtitle: 'Next.js Study Platform',
+      subtitle: 'Projects Study Platform',
       largeText: 'COLLABHUB',
       color: '#ff2a5f',
       tech: ['Next.js', 'Supabase', 'Clerk', 'Tailwind'],
