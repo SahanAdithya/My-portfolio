@@ -18,6 +18,7 @@ import sahanLogoNavy from './sahan-logo-navy.webp';
 import adorixImg from './adorix.webp';
 import electricityAnalystImg from './electricity-analyst.webp';
 import financeTrackerImg from './finance-tracker.webp';
+import collabhubImg from './collabhub.webp';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
@@ -153,7 +154,7 @@ function App() {
       color: '#ff2a5f',
       tech: ['Next.js', 'Supabase', 'Clerk', 'Tailwind'],
       description: 'A modern study group collaboration platform featuring interactive classrooms, real-time whiteboards, and Supabase backend integration.',
-      image: '',
+      image: collabhubImg,
       status: '(2ND YEAR PROJECT - ONGOING)',
       link: 'https://github.com/SahanAdithya'
     },
