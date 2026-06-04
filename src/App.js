@@ -148,14 +148,14 @@ function App() {
     },
     {
       id: 'cohort',
-      title: 'Cohort App',
+      title: 'CollabHub',
       subtitle: 'Next.js Study Platform',
-      largeText: 'COHORT',
+      largeText: 'COLLABHUB',
       color: '#ff2a5f',
       tech: ['Next.js', 'Supabase', 'Clerk', 'Tailwind'],
-      description: 'A modern study group collaboration platform featuring interactive classrooms, real-time whiteboards, and Supabase backend integration.',
+      description: 'The ultimate workspace for students to form teams, build high-impact projects, and collaborate with peers worldwide.',
       image: collabhubImg,
-      status: '(2ND YEAR PROJECT - ONGOING)',
+      status: '',
       link: 'https://github.com/SahanAdithya'
     },
     {
