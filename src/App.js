@@ -152,7 +152,7 @@ function App() {
       subtitle: 'Projects Study Platform',
       largeText: 'COLLABHUB',
       color: '#ff2a5f',
-      tech: ['Next.js', 'Supabase', 'Clerk', 'Tailwind'],
+      tech: ['Next.js', 'Supabase', 'Clerk', 'WSO2 Asgardeo', 'Tailwind'],
       description: 'The ultimate workspace for students to form teams, build high-impact projects, and collaborate with peers worldwide.',
       image: collabhubImg,
       status: '',
